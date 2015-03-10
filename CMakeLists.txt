@@ -6,11 +6,12 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMakeModules)
 
 # Find SDL2
 find_package(SDL2 REQUIRED)
+find_package (SDL2_image REQUIRED)
 
 # Add global definitions
 add_definitions("-Wall")
 include_directories(${SDL2_INCLUDE_DIR})
 
-add_executable(rw main.c)
+add_executable(rw main.cpp)
 install(TARGETS rw DESTINATION bin)
 target_link_libraries(rw ${SDL2_LIBRARIES})
