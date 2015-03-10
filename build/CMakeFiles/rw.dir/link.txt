@@ -1,0 +1,1 @@
+/usr/bin/c++   -g    CMakeFiles/rw.dir/main.cpp.o  -o rw -rdynamic -lSDL2 -lpthread 
