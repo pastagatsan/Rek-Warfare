@@ -53,14 +53,11 @@ void loop(bool running, SDL_Renderer* renderer, SDL_Rect* image_box) {
 }
 
 void setup(SDL_Renderer*& renderer, SDL_Window* window) {
-    renderer = NULL;
-    //image = NULL;
-    
     renderer = SDL_CreateRenderer(window, -1, 0);
-    if (renderer == NULL) { 
+    if (renderer == NULL) {
       std::cerr << "Couldn't create renderer!" << std::endl;
-    } 
-    
+    }
+
     /*std::string image_path = "image.bmp";
     image = IMG_LoadTexture(renderer, image_path.c_str());
     if (image == NULL) {
