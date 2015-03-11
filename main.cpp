@@ -4,13 +4,13 @@
 //#include "SDL_image.h"
 
 void loop(bool running, SDL_Renderer* renderer, SDL_Rect* image_box);
-void setup(SDL_Renderer* renderer, SDL_Window* window, SDL_Rect* image_box);
+void setup(SDL_Renderer*& renderer, SDL_Window* window);
 
 int main(int argc, char** argv) {
     SDL_Window* window;
     SDL_Renderer* renderer;
     //SDL_Texture* image;
-    SDL_Rect* image_box = NULL;
+    SDL_Rect image_box = {200, 200, 100, 100};
     window = NULL;
 
     bool running = true;
@@ -25,13 +25,12 @@ int main(int argc, char** argv) {
             std::cerr << "Window not created!" << std::endl;
             return 1;
         } else {
-	    setup(renderer, window, image_box);
-            loop(running, renderer, image_box);
+        setup(renderer, window);
+            loop(running, renderer, &image_box);
         }
     }
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
-    delete image_box;
     SDL_Quit();
     return 0;
 }
@@ -53,24 +52,15 @@ void loop(bool running, SDL_Renderer* renderer, SDL_Rect* image_box) {
     }
 }
 
-void setup(SDL_Renderer* renderer, SDL_Window* window, SDL_Rect* image_box) {
-    renderer = NULL;
-    //image = NULL;
-    
+void setup(SDL_Renderer*& renderer, SDL_Window* window) {
     renderer = SDL_CreateRenderer(window, -1, 0);
-    if (renderer == NULL) { 
+    if (renderer == NULL) {
       std::cerr << "Couldn't create renderer!" << std::endl;
-    } 
-    
+    }
+
     /*std::string image_path = "image.bmp";
     image = IMG_LoadTexture(renderer, image_path.c_str());
     if (image == NULL) {
       std::cerr << "Couldn't create image.bmp!" << std::endl;
-    }*/
-    
-    image_box->w = 200;
-    image_box->h = 200;
-    image_box->x = 100;
-    image_box->y = 100;
-    
+    }*/    
 }
