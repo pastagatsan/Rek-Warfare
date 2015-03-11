@@ -4,7 +4,7 @@
 //#include "SDL_image.h"
 
 void loop(bool running, SDL_Renderer* renderer, SDL_Rect* image_box);
-void setup(SDL_Renderer *&renderer, SDL_Window* window);
+void setup(SDL_Renderer*& renderer, SDL_Window* window);
 
 int main(int argc, char** argv) {
     SDL_Window* window;
