@@ -37,7 +37,7 @@ Name=rw
 Type=Native Application
 
 [Launch][Launch Configuration 0][Data]
-Arguments=
+Arguments=-lSDL2_image
 Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x02\x00\x00\x00\x04\x00r\x00w\x00\x00\x00\x04\x00r\x00w)
 Dependency Action=Build
 EnvironmentGroup=
