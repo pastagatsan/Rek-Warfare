@@ -65,7 +65,6 @@ void setup(SDL_Renderer*& renderer, SDL_Window* window, SDL_Texture* image) {
     }
     
     std::string image_path = "resource/concept_classes.png";
-    using namespace drawer;
     image = drawer::loadTexture(renderer, image_path.c_str());
     if (image == NULL) {
       std::cerr << "Couldn't create image.bmp!" << std::endl;
