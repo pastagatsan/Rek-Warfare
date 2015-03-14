@@ -1,17 +1,19 @@
 #include <iostream>
 #include <error.h>
-#include "SDL.h"
-//#include "SDL_image.h"
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_image.h"
+#include "graphics/Drawer.hpp"
 
-void loop(bool running, SDL_Renderer* renderer, SDL_Rect* image_box);
-void setup(SDL_Renderer*& renderer, SDL_Window* window);
+void loop(bool running, SDL_Renderer* renderer, SDL_Rect* image_box, SDL_Texture* image);
+void setup(SDL_Renderer*& renderer, SDL_Window* window, SDL_Texture* image);
 
 int main(int argc, char** argv) {
     SDL_Window* window;
     SDL_Renderer* renderer;
-    //SDL_Texture* image;
+    SDL_Texture* image;
     SDL_Rect image_box = {200, 200, 100, 100};
     window = NULL;
+    image = NULL;
 
     bool running = true;
     
@@ -25,17 +27,18 @@ int main(int argc, char** argv) {
             std::cerr << "Window not created!" << std::endl;
             return 1;
         } else {
-        setup(renderer, window);
-            loop(running, renderer, &image_box);
+	    setup(renderer, window, image);
+            loop(running, renderer, &image_box, image);
         }
     }
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
+    IMG_Quit();
     SDL_Quit();
     return 0;
 }
 
-void loop(bool running, SDL_Renderer* renderer, SDL_Rect* image_box) {
+void loop(bool running, SDL_Renderer* renderer, SDL_Rect* image_box, SDL_Texture* image) {
     while (running) { 
 	SDL_Event event;
         while (SDL_PollEvent(&event) !=  0) {
@@ -45,22 +48,27 @@ void loop(bool running, SDL_Renderer* renderer, SDL_Rect* image_box) {
         }
         SDL_RenderPresent(renderer);
         
-        //SDL_RenderCopy(renderer, image, NULL, image_box);
-	SDL_RenderDrawRect(renderer, image_box);
+        drawer::drawTexture(renderer, image, image_box);
         
         SDL_RenderClear(renderer);
     }
 }
 
-void setup(SDL_Renderer*& renderer, SDL_Window* window) {
+void setup(SDL_Renderer*& renderer, SDL_Window* window, SDL_Texture* image) {
     renderer = SDL_CreateRenderer(window, -1, 0);
     if (renderer == NULL) {
       std::cerr << "Couldn't create renderer!" << std::endl;
     }
-
-    /*std::string image_path = "image.bmp";
-    image = IMG_LoadTexture(renderer, image_path.c_str());
+    
+    if (IMG_Init(IMG_INIT_PNG) == 0) { 
+	std::cerr << "Could not initialize IMG_INIT_PNG!" << std::endl;
+    }
+    
+    std::string image_path = "resource/concept_classes.png";
+    using namespace drawer;
+    image = drawer::loadTexture(renderer, image_path.c_str());
     if (image == NULL) {
       std::cerr << "Couldn't create image.bmp!" << std::endl;
-    }*/    
+    }
 }
+
