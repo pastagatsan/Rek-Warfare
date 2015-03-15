@@ -4,15 +4,13 @@
 #include "SDL2/SDL_image.h"
 #include "graphics/Drawer.hpp"
 
-void loop(bool running, SDL_Renderer* renderer, SDL_Rect* image_box, SDL_Texture* image);
+void loop(SDL_Renderer* renderer, SDL_Rect* image_box, SDL_Texture* image);
 void setup(SDL_Renderer*& renderer, SDL_Window* window, SDL_Texture*& image);
 
 int main(int /*argc*/, char** /*argv*/) {
     SDL_Window* window;
     SDL_Renderer* renderer;
     SDL_Texture* image;
-
-    bool running = true;
     
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "Couldn't intizialize SDL! Error: " << SDL_GetError() << std::endl;
@@ -25,7 +23,7 @@ int main(int /*argc*/, char** /*argv*/) {
             return 1;
         } else {
             setup(renderer, window, image);
-            loop(running, renderer, nullptr, image);
+            loop(renderer, nullptr, image);
         }
     }
     SDL_DestroyRenderer(renderer);
@@ -35,7 +33,8 @@ int main(int /*argc*/, char** /*argv*/) {
     return 0;
 }
 
-void loop(bool running, SDL_Renderer* renderer, SDL_Rect* image_box, SDL_Texture* image) {
+void loop(SDL_Renderer* renderer, SDL_Rect* image_box, SDL_Texture* image) {
+    bool running = true;
     while (running) { 
         SDL_Event event;
         while (SDL_PollEvent(&event) !=  0) {
