@@ -16,7 +16,8 @@ int main(int /*argc*/, char** /*argv*/) {
         return 1;
     }
 
-    auto window = SDL_CreateWindow("Rek Warfare", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
+    auto window = SDL_CreateWindow("Rek Warfare", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+                                   800, 600, SDL_WINDOW_SHOWN);
 
     if (window == nullptr) {
         std::cerr << "Window not created!" << std::endl;
