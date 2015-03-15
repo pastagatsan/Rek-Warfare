@@ -26,6 +26,7 @@ int main(int /*argc*/, char** /*argv*/) {
             loop(renderer, nullptr, image);
         }
     }
+    SDL_DestroyTexture(image);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     IMG_Quit();
