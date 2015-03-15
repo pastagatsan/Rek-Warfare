@@ -5,15 +5,13 @@
 #include "graphics/Drawer.hpp"
 
 void loop(bool running, SDL_Renderer* renderer, SDL_Rect* image_box, SDL_Texture* image);
-void setup(SDL_Renderer*& renderer, SDL_Window* window, SDL_Texture* image);
+void setup(SDL_Renderer*& renderer, SDL_Window* window, SDL_Texture*& image);
 
 int main(int argc, char** argv) {
     SDL_Window* window;
     SDL_Renderer* renderer;
     SDL_Texture* image;
     SDL_Rect image_box = {200, 200, 100, 100};
-    window = NULL;
-    image = NULL;
 
     bool running = true;
     
@@ -54,7 +52,7 @@ void loop(bool running, SDL_Renderer* renderer, SDL_Rect* image_box, SDL_Texture
     }
 }
 
-void setup(SDL_Renderer*& renderer, SDL_Window* window, SDL_Texture* image) {
+void setup(SDL_Renderer*& renderer, SDL_Window* window, SDL_Texture*& image) {
     renderer = SDL_CreateRenderer(window, -1, 0);
     if (renderer == NULL) {
       std::cerr << "Couldn't create renderer!" << std::endl;
