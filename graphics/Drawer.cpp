@@ -13,13 +13,13 @@ SDL_Texture* loadTexture(SDL_Renderer* rend, std::string path) {
     SDL_Surface* load = IMG_Load(path.c_str());
     
     if (load == NULL) {
-	std::cerr << "Could not load " << path << "!Reason: " << SDL_GetError() << std::endl;
+        std::cerr << "Could not load " << path << "!Reason: " << SDL_GetError() << std::endl;
     } else { 
-	tex = SDL_CreateTextureFromSurface(rend, load);
-	if (tex == NULL) { 
-	    std::cerr << "Couldn't create texture from surface " << path << "!Reason: " << SDL_GetError() << std::endl;
-	}
-	SDL_FreeSurface(load);
+        tex = SDL_CreateTextureFromSurface(rend, load);
+        if (tex == NULL) {
+            std::cerr << "Couldn't create texture from surface " << path << "!Reason: " << SDL_GetError() << std::endl;
+        }
+        SDL_FreeSurface(load);
     }
     return tex;
 }
