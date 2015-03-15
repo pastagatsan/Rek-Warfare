@@ -9,14 +9,14 @@
 namespace drawer {
 
 SDL_Texture* loadTexture(SDL_Renderer* rend, std::string path) {
-    SDL_Texture* tex = NULL;
+    SDL_Texture* tex = nullptr;
     SDL_Surface* load = IMG_Load(path.c_str());
     
-    if (load == NULL) {
+    if (load == nullptr) {
         std::cerr << "Could not load " << path << "!Reason: " << SDL_GetError() << std::endl;
     } else { 
         tex = SDL_CreateTextureFromSurface(rend, load);
-        if (tex == NULL) {
+        if (tex == nullptr) {
             std::cerr << "Couldn't create texture from surface " << path << "!Reason: " << SDL_GetError() << std::endl;
         }
         SDL_FreeSurface(load);
@@ -29,6 +29,6 @@ void drawTexture(SDL_Renderer* rend, SDL_Texture* texture, SDL_Rect* size, SDL_R
 }
 
 void drawTexture(SDL_Renderer* rend, SDL_Texture* texture, SDL_Rect* size) {
-    drawer::drawTexture(rend, texture, size, NULL);
+    drawer::drawTexture(rend, texture, size, nullptr);
 }
 }
