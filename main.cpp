@@ -44,11 +44,9 @@ void loop(bool running, SDL_Renderer* renderer, SDL_Rect* image_box, SDL_Texture
                 running = false;
             }
         }
-        SDL_RenderPresent(renderer);
-        
-        drawer::drawTexture(renderer, image, image_box);
-        
         SDL_RenderClear(renderer);
+        drawer::drawTexture(renderer, image, image_box);
+        SDL_RenderPresent(renderer);
     }
 }
 
