@@ -8,24 +8,24 @@ void loop(SDL_Renderer* renderer, SDL_Rect* image_box, SDL_Texture* image);
 void setup(SDL_Renderer*& renderer, SDL_Window* window, SDL_Texture*& image);
 
 int main(int /*argc*/, char** /*argv*/) {
-    SDL_Window* window;
     SDL_Renderer* renderer;
     SDL_Texture* image;
     
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "Couldn't intizialize SDL! Error: " << SDL_GetError() << std::endl;
         return 1;
-    } else {
-        window = SDL_CreateWindow("Rek Warfare", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
-	
-        if (window == nullptr) {
-            std::cerr << "Window not created!" << std::endl;
-            return 1;
-        } else {
-            setup(renderer, window, image);
-            loop(renderer, nullptr, image);
-        }
     }
+
+    auto window = SDL_CreateWindow("Rek Warfare", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
+
+    if (window == nullptr) {
+        std::cerr << "Window not created!" << std::endl;
+        return 1;
+    }
+
+    setup(renderer, window, image);
+    loop(renderer, nullptr, image);
+
     SDL_DestroyTexture(image);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
