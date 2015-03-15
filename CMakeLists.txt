@@ -12,6 +12,6 @@ find_package (SDL2_image REQUIRED)
 add_definitions("-Wall")
 include_directories(${SDL2_INCLUDE_DIR})
 
-add_executable(rw main.cpp)
+add_executable(rw main.cpp graphics/Drawer.cpp)
 install(TARGETS rw DESTINATION bin)
-target_link_libraries(rw ${SDL2_LIBRARIES})
+target_link_libraries(rw ${SDL2_LIBRARIES} ${SDLIMAGE_LIBRARY})
