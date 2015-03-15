@@ -11,7 +11,6 @@ int main(int argc, char** argv) {
     SDL_Window* window;
     SDL_Renderer* renderer;
     SDL_Texture* image;
-    SDL_Rect image_box = {200, 200, 100, 100};
 
     bool running = true;
     
@@ -26,7 +25,7 @@ int main(int argc, char** argv) {
             return 1;
         } else {
             setup(renderer, window, image);
-            loop(running, renderer, &image_box, image);
+            loop(running, renderer, NULL, image);
         }
     }
     SDL_DestroyRenderer(renderer);
