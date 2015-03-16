@@ -16,7 +16,7 @@ namespace drawer {
      * size - coordinates, width, and height 
      * fraction - part of the texture to be rendered
      */
-    void drawTexture(SDL_Renderer* rend, SDL_Texture* texture, SDL_Rect* size, SDL_Rect* fraction);
+    void drawTexture(SDL_Renderer* rend, SDL_Texture* texture, SDL_Rect* fraction, SDL_Rect* size);
     void drawTexture(SDL_Renderer* rend, SDL_Texture* texture, SDL_Rect* size);
 }
 

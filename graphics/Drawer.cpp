@@ -24,11 +24,11 @@ SDL_Texture* loadTexture(SDL_Renderer* rend, std::string path) {
     return tex;
 }
     
-void drawTexture(SDL_Renderer* rend, SDL_Texture* texture, SDL_Rect* size, SDL_Rect* fraction) {
-    SDL_RenderCopy(rend, texture, size, fraction);
+void drawTexture(SDL_Renderer* rend, SDL_Texture* texture, SDL_Rect* fraction, SDL_Rect* size) {
+    SDL_RenderCopy(rend, texture, fraction, size);
 }
 
 void drawTexture(SDL_Renderer* rend, SDL_Texture* texture, SDL_Rect* size) {
-    drawer::drawTexture(rend, texture, size, nullptr);
+    drawer::drawTexture(rend, texture, nullptr, size);
 }
 }

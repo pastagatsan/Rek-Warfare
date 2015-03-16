@@ -22,9 +22,10 @@ int main(int /*argc*/, char** /*argv*/) {
         std::cerr << "Window not created!" << std::endl;
         return 1;
     }
-
+    
+    SDL_Rect tmpb = {0, 0, 200, 200};
     setup(renderer, window, image);
-    loop(renderer, nullptr, image);
+    loop(renderer, &tmpb, image);
 
     SDL_DestroyTexture(image);
     SDL_DestroyRenderer(renderer);
@@ -50,7 +51,7 @@ void loop(SDL_Renderer* renderer, SDL_Rect* image_box, SDL_Texture* image) {
 }
 
 void setup(SDL_Renderer*& renderer, SDL_Window* window, SDL_Texture*& image) {
-    renderer = SDL_CreateRenderer(window, -1, 0);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if (renderer == nullptr) {
         std::cerr << "Couldn't create renderer!" << std::endl;
     }
