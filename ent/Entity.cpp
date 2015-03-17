@@ -6,7 +6,6 @@
 namespace entity {
 	
 Entity::Entity(SDL_Rect* box) : rect(box) { }
-
 void Entity::render() { }
 
 }
