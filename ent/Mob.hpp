@@ -11,14 +11,16 @@ namespace entity {
 			
 		public:
 			Mob(int id, SDL_Rect* box);
-			virtual void input();
-			virtual void render();
+			void input();
+			void render() override;
 			int getID();
+			int getSpeed();
 			double getHP();
 			
 		protected:
 			double hp;
 			int id;
+			int speed;
 		};
 	}
 }
