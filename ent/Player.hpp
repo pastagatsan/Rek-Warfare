@@ -8,12 +8,15 @@
 namespace entity {
 namespace mob { 
 	
-	enum Class { RADIER, MARINER, SORCERER, TECH_MASTER, BIO_PRO };
+	enum Class { RAIDER, MARINER, SORCERER, TECH_MASTER, BIO_PRO };
+	std::string className(Class cn);
 	
 	class Player : public Mob { 
 		
 	public:
 		Player(Class c, std::string username);
+		void input();
+		void render() override;
 	};
 }	
 }

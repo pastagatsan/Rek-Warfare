@@ -11,7 +11,6 @@ namespace entity {
 			
 		public:
 			Mob(int id, SDL_Rect* box);
-			void input();
 			void render() override;
 			int getID();
 			int getSpeed();
