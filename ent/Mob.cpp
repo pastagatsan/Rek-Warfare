@@ -3,12 +3,11 @@
 namespace entity {
 namespace mob { 
 
-Character::Character(int id, SDL_Rect* box): Entity(box) { }
-
-void Character::input() { }
-void Character::render() { }
-double Character::getHP() { return Character::hp; }
-int Character::getID() { return Character::id; }
+Mob::Mob(int id, SDL_Rect* box): Entity(box) { Mob::id = id; }
+void Mob::input() { }
+void Mob::render() { }
+double Mob::getHP() { return Mob::hp; }
+int Mob::getID() { return Mob::id; }
 
 } 
 }

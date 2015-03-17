@@ -7,10 +7,10 @@ namespace entity {
 	namespace mob { 
 		
 		
-		class Character : public Entity {
+		class Mob : public Entity {
 			
 		public:
-			Character(int id, SDL_Rect* box);
+			Mob(int id, SDL_Rect* box);
 			friend void input();
 			friend void render();
 			int getID();
