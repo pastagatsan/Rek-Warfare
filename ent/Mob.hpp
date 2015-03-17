@@ -11,8 +11,8 @@ namespace entity {
 			
 		public:
 			Mob(int id, SDL_Rect* box);
-			friend void input();
-			friend void render();
+			virtual void input();
+			virtual void render();
 			int getID();
 			double getHP();
 			

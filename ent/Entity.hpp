@@ -9,7 +9,7 @@ namespace entity {
 	
     public:
 		Entity(SDL_Rect* box);
-		friend void render();
+		virtual void render();
 	protected:
 		SDL_Rect* rect;
     };
