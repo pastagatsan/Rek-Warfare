@@ -1,7 +1,7 @@
 # Rek-Warfare
 Awesome 2D Platform shooting game
 
-[![Download Rek Warfare](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/rekwarfare/files/latest/download)
+[![Download Rek Warfare](https://sourceforge.net/sflogo.php?type=8&group_id=2412225)](https://sourceforge.net/p/rekwarfare/)
 
 # SDL2
 
