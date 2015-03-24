@@ -16,7 +16,7 @@ namespace entity {
         virtual int getY();
 
 	protected:
-		SDL_Rect* rect;
+		SDL_Rect* e_box;
     };
 }
 
