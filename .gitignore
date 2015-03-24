@@ -1,4 +1,8 @@
-rw.kdev4
+#rw.kdev4
 # Compiler output
 rekwarfare
 *.out
+# Eclipse
+.project
+.settings/
+
