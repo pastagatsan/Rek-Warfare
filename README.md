@@ -25,20 +25,9 @@ cd rek-build
 
 Keeping the build files in a separate directory helps keep our source folder *clean*.
 
-~ After this, create a file named `rwbuild.sh` inside `rek-build`.
+~ Assuming that you are in `rek-build`, write the command `cmake` followed by the path of the source folder
 
-~ Open `rwbuild.sh` and copy paste the code from ![here](https://gist.github.com/Microcoding/11ade7e4d98708d8917c#file-rwbuild-sh).
-
-~ Now, go to your terminal, `cd` (navigate) to `rek-build` and write this:
-
-```
-chmod 777 ./rwbuild.sh
-```
-
-~ After that, you can easily build Rek Warfare whenever you want with this command (as long as you stay in the `rek-build` folder):
-
-`./rwbuild.sh`
-
+~ After CMake has finished its work, you can now type `make`
 
 ### Other Operating Systems ###
 
