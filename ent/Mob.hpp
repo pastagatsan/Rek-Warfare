@@ -1,5 +1,4 @@
-#ifndef MOB_HPP
-#define MOB_HPP
+#pragma once
 
 #include "Entity.hpp"
 
@@ -24,5 +23,3 @@ namespace entity {
 		};
 	}
 }
-
-#endif

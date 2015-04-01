@@ -1,9 +1,7 @@
-#ifndef RUN_HPP
-#define RUN_HPP
+#pragma once
 
 namespace run {
 
 	void clientGame();
 }
 
-#endif

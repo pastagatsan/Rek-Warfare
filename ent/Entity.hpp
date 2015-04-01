@@ -1,5 +1,4 @@
-#ifndef ENTITY_HPP
-#define ENTITY_HPP
+#pragma once
 
 #include "SDL2/SDL.h"
 
@@ -19,5 +18,3 @@ namespace entity {
 		SDL_Rect* e_box;
     };
 }
-
-#endif

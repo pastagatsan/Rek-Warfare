@@ -1,5 +1,4 @@
-#ifndef PLAYER_HPP
-#define PLAYER_HPP
+#pragma once
 
 #include "Entity.hpp"
 #include "Mob.hpp"
@@ -26,5 +25,3 @@ namespace mob {
 	};
 }
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef DRAWER_HPP
-#define DRAWER_HPP
+#pragma once
 
 #include <string>
 #include "SDL2/SDL.h"
@@ -19,5 +18,3 @@ namespace drawer {
     void drawTexture(SDL_Renderer* rend, SDL_Texture* texture, SDL_Rect* fraction, SDL_Rect* size);
     void drawTexture(SDL_Renderer* rend, SDL_Texture* texture, SDL_Rect* size);
 }
-
-#endif
