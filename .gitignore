@@ -1,5 +1,7 @@
+# KDevelop4
 rw.kdev4
 *.kdev4
+build/
 # Compiler output
 rekwarfare
 *.out
