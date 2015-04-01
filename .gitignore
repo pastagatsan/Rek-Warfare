@@ -1,4 +1,5 @@
 rw.kdev4
+*.kdev4
 # Compiler output
 rekwarfare
 *.out
