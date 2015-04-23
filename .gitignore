@@ -8,4 +8,5 @@ rekwarfare
 # Eclipse
 .project
 .settings/
-
+# Gemfile, for gh-pages
+Gemfile
