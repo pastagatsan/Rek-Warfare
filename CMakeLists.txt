@@ -12,6 +12,6 @@ find_package (SDL2_image REQUIRED)
 add_definitions("-std=c++11 -Wall -pedantic-errors -Wextra")
 include_directories(${SDL2_INCLUDE_DIR})
 
-add_executable(rekwarfare main.cpp graphics/Drawer.cpp graphics/Texture.cpp)
+add_executable(rekwarfare main.cpp Win.cpp graphics/Drawer.cpp graphics/Texture.cpp)
 install(TARGETS rekwarfare DESTINATION bin)
 target_link_libraries(rekwarfare ${SDL2_LIBRARIES} ${SDLIMAGE_LIBRARY})
