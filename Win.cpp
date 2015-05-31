@@ -1,7 +1,7 @@
 #include "Win.hpp"
 
 #include "SDL2/SDL.h"
-#include "SDL2/SDL_opengl.h"
+#include "SDL2/SDL_image.h"
 
 #include <iostream>
 #include <string>
@@ -25,7 +25,11 @@ Win::Win(std::string title, int x, int y, int width, int height) {
     }
 }
 
-void Win::setup() { }
+void Win::setup() {
+    if (!(IMG_Init(IMG_INIT_PNG) < 0 & IMG_INIT_PNG)) {
+        std::cerr << "Could not init SDL_image! Reason: " << IMG_GetError() << std::endl;
+    }
+}
 
 void Win::renderAll(SDL_Event* e) {
     while (SDL_PollEvent(e)) {
