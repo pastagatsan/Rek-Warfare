@@ -16,6 +16,8 @@ int main(int, char**) {
     std::cout << "[Window] width : " << window.getWidth() << std::endl;
     std::cout << "[Window] height : " <<  window.getHeight() << std::endl;
 
+    window.setup();
+
     bool running = true;
     SDL_Event e;
     while ((running = window.isRunning())) {
