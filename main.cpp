@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "SDL2/SDL.h"
+#include "SDL2/SDL_image.h"
 #include "Win.hpp"
 
 int main(int, char**) {
@@ -29,6 +30,7 @@ int main(int, char**) {
     }
     // release everything here
     window.destroy();
+    IMG_Quit();
     SDL_Quit();
     return 0;
 }
