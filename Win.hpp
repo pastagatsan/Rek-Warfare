@@ -8,6 +8,7 @@ class Win {
 
 public:
     Win(std::string title, int x, int y, int width, int height);
+    void setup();
     /**
     * Render everything and handle entities in the window.
     * This includes handling of key input and window events

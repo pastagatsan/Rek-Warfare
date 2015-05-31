@@ -1,69 +1,34 @@
 #include <iostream>
+
 #include "SDL2/SDL.h"
-#include "SDL2/SDL_image.h"
-#include "graphics/Drawer.hpp"
+#include "Win.hpp"
 
-void loop(SDL_Renderer* renderer, SDL_Rect* image_box, SDL_Texture* image);
-void setup(SDL_Renderer*& renderer, SDL_Window* window, SDL_Texture*& image);
-
-int main(int /*argc*/, char** /*argv*/) {
-    SDL_Renderer* renderer;
-    SDL_Texture* image;
-    
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        std::cerr << "Couldn't intizialize SDL! Error: " << SDL_GetError() << std::endl;
+int main(int, char**) {
+    if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+        std::cerr << "Could not init SDL!" << std::endl
+        << "[Error] SDL_Init failed: " << SDL_GetError();
         return 1;
     }
 
-    auto window = SDL_CreateWindow("Rek Warfare", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                                   800, 600, SDL_WINDOW_SHOWN);
+    Win window("Rek Warfare", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600);
+    std::cout << "[Window] x : " << window.getX() << std::endl << "[Window] y : " << window.getY()
+        << std::endl;
+    std::cout << "[Window] width : " << window.getWidth() << std::endl;
+    std::cout << "[Window] height : " <<  window.getHeight() << std::endl;
 
-    if (window == nullptr) {
-        std::cerr << "Window not created!" << std::endl;
-        return 1;
+    window.setup();
+
+    bool running = true;
+    SDL_Event e;
+    while ((running = window.isRunning())) {
+        window.clear();
+
+        window.renderAll(&e);
+
+        window.update();
     }
-    
-    SDL_Rect tmpb = {0, 0, 200, 200};
-    setup(renderer, window, image);
-    loop(renderer, &tmpb, image);
-
-    SDL_DestroyTexture(image);
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-    IMG_Quit();
+    // release everything here
+    window.destroy();
     SDL_Quit();
     return 0;
 }
-
-void loop(SDL_Renderer* renderer, SDL_Rect* image_box, SDL_Texture* image) {
-    bool running = true;
-    while (running) { 
-        SDL_Event event;
-        while (SDL_PollEvent(&event) !=  0) {
-            if (event.type == SDL_QUIT) {
-                running = false;
-            }
-        }
-        SDL_RenderClear(renderer);
-        drawer::drawTexture(renderer, image, image_box);
-        SDL_RenderPresent(renderer);
-    }
-}
-
-void setup(SDL_Renderer*& renderer, SDL_Window* window, SDL_Texture*& image) {
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    if (renderer == nullptr) {
-        std::cerr << "Couldn't create renderer!" << std::endl;
-    }
-    
-    if (IMG_Init(IMG_INIT_PNG) == 0) { 
-        std::cerr << "Could not initialize IMG_INIT_PNG!" << std::endl;
-    }
-    
-    std::string image_path = "resource/concept_classes.png";
-    image = drawer::loadTexture(renderer, image_path);
-    if (image == nullptr) {
-        std::cerr << "Couldn't create image.bmp!" << std::endl;
-    }
-}
-

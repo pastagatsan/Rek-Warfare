@@ -25,6 +25,8 @@ Win::Win(std::string title, int x, int y, int width, int height) {
     }
 }
 
+void Win::setup() { }
+
 void Win::renderAll(SDL_Event* e) {
     while (SDL_PollEvent(e)) {
         switch (e->type) {
