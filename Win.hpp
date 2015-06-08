@@ -8,13 +8,13 @@ class Win {
 
 public:
     Win(std::string title, int x, int y, int width, int height);
+    ~Win();
     void setup();
     /**
     * Render everything and handle entities in the window.
     * This includes handling of key input and window events
     */
     void renderAll(SDL_Event* e);
-    void destroy();
     void clear();
     void update();
     /**
@@ -37,5 +37,7 @@ private:
     bool m_running = true;
     SDL_Window* m_win = nullptr;
     SDL_Renderer* m_renderer = nullptr;
+protected:
+
 
 };

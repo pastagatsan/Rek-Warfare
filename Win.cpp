@@ -25,8 +25,13 @@ Win::Win(std::string title, int x, int y, int width, int height) {
     }
 }
 
+Win::~Win() {
+    SDL_DestroyRenderer(m_renderer);
+    SDL_DestroyWindow(m_win);
+}
+
 void Win::setup() {
-    if (!(IMG_Init(IMG_INIT_PNG) < 0 & IMG_INIT_PNG)) {
+    if (!((IMG_Init(IMG_INIT_PNG) < 0) & IMG_INIT_PNG)) {
         std::cerr << "Could not init SDL_image! Reason: " << IMG_GetError() << std::endl;
     }
 }
@@ -39,11 +44,6 @@ void Win::renderAll(SDL_Event* e) {
                 break;
         }
     }
-}
-
-void Win::destroy() {
-    SDL_DestroyRenderer(m_renderer);
-    SDL_DestroyWindow(m_win);
 }
 
 void Win::clear() {
