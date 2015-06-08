@@ -4,17 +4,18 @@
 
 namespace entity {
 
-    class Entity {
+	class Entity {
 
-    public:
-		Entity(SDL_Rect* box);
+	public:
+		Entity(SDL_Rect box);
+		virtual ~Entity();
 		virtual void render();
-        virtual void setX(int x);
-        virtual void setY(int y);
-        virtual int getX();
-        virtual int getY();
+		void setX(int x) { m_box.x = x; }
+		void setY(int y) { m_box.y = y; }
+		int getX() { return m_box.x; }
+		int getY() { return m_box.y; }
 
 	protected:
-		SDL_Rect* e_box;
-    };
+		SDL_Rect m_box;
+	};
 }
