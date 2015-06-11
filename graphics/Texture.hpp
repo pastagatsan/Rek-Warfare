@@ -30,6 +30,7 @@ namespace drawer {
 
 	public:
 		Texture(SDL_Texture* tex, SDL_Renderer* rend);
+		~Texture();
 		/**
 		 * Draws the texture. You decide wether to draw a section or all of it
 		 * @tw - width of section to crop

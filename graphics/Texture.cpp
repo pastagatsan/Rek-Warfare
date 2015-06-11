@@ -12,6 +12,10 @@ Texture::Texture(SDL_Texture* tex, SDL_Renderer* rend) {
 	// TODO: Place texture information in m_texinf
 }
 
+Texture::~Texture() {
+	SDL_DestroyTexture(m_texture);
+}
+
 void Texture::draw(SpriteTile tile, int x, int y, int w, int h) {
 	SDL_Rect* sec, *size;
 
