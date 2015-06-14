@@ -2,35 +2,34 @@
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
-#include "Win.hpp"
+#include "Window.hpp"
 
 int main(int, char**) {
-    if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-        std::cerr << "Could not init SDL!" << std::endl
-        << "[Error] SDL_Init failed: " << SDL_GetError();
-        return 1;
-    }
+	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+		std::cerr << "Could not init SDL!" << std::endl
+		<< "[Error] SDL_Init failed: " << SDL_GetError();
+		return 1;
+	}
 
-    Win window("Rek Warfare", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600);
-    std::cout << "[Window] x : " << window.getX() << std::endl << "[Window] y : " << window.getY()
-        << std::endl;
-    std::cout << "[Window] width : " << window.getWidth() << std::endl;
-    std::cout << "[Window] height : " <<  window.getHeight() << std::endl;
+	Window window("Rek Warfare", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600);
+	std::cout << "[Window] x : " << window.getX() << std::endl << "[Window] y : " << window.getY()
+		<< std::endl;
+	std::cout << "[Window] width : " << window.getWidth() << std::endl;
+	std::cout << "[Window] height : " <<  window.getHeight() << std::endl;
 
-    window.setup();
+	window.setup();
 
-    bool running = true;
-    SDL_Event e;
-    while ((running = window.isRunning())) {
-        window.clear();
+	bool running = true;
+	SDL_Event e;
+	while ((running = window.isRunning())) {
+		window.clear();
 
-        window.renderAll(&e);
+		window.renderAll(&e);
 
-        window.update();
-    }
-    // release everything here
-    window.destroy();
-    IMG_Quit();
-    SDL_Quit();
-    return 0;
+		window.update();
+	}
+	// release everything here
+	IMG_Quit();
+	SDL_Quit();
+	return 0;
 }
