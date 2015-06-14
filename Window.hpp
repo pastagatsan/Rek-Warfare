@@ -1,6 +1,8 @@
 #pragma once
 
 #include "SDL2/SDL.h"
+#include "graphics/Drawer.hpp"
+#include "graphics/Texture.hpp"
 
 #include <string>
 
@@ -38,6 +40,6 @@ private:
 	SDL_Window* m_win = nullptr;
 	SDL_Renderer* m_renderer = nullptr;
 protected:
-
+	drawer::Texture test;
 
 };
