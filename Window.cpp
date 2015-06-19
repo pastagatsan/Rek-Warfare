@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 
-Win::Win(std::string title, int x, int y, int width, int height) {
+Window::Window(std::string title, int x, int y, int width, int height) {
 	m_title = title;
 	m_x = x;
 	m_y = y;
@@ -27,14 +27,14 @@ Win::Win(std::string title, int x, int y, int width, int height) {
 	}
 }
 
-Win::~Win() {
+Window::~Window() {
 	SDL_DestroyRenderer(m_renderer);
 	SDL_DestroyWindow(m_win);
 }
 
 using namespace drawer;
 
-void Win::setup() {
+void Window::setup() {
 	if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG) {
 		std::cerr << "Could not init SDL_image! Reason: " << IMG_GetError() << std::endl;
 	} else {
@@ -43,7 +43,7 @@ void Win::setup() {
 	test = createTexture(loadTexture(m_renderer, "resource/biopro_emblem.png"), m_renderer);
 }
 
-void Win::renderAll(SDL_Event* e) {
+void Window::renderAll(SDL_Event* e) {
 	while (SDL_PollEvent(e)) {
 		switch (e->type) {
 			case SDL_QUIT:
@@ -55,15 +55,15 @@ void Win::renderAll(SDL_Event* e) {
 	test.draw(FULL_IMAGE, 0, 0, 500, 500);
 }
 
-void Win::clear() {
+void Window::clear() {
 	SDL_RenderClear(m_renderer);
 }
 
-void Win::update() {
+void Window::update() {
 	SDL_RenderPresent(m_renderer);
 }
 
-void Win::toggleLog() {
+void Window::toggleLog() {
 	m_logging = (!m_logging) ? false : true;
 	std::cout << "[Event] Logging is now " << ((m_logging) ? "disabled" : "Enabled") << std::endl;
 }

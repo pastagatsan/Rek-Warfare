@@ -6,11 +6,11 @@
 
 #include <string>
 
-class Win {
+class Window {
 
 public:
-	Win(std::string title, int x, int y, int width, int height);
-	~Win();
+	Window(std::string title, int x, int y, int width, int height);
+	~Window();
 	void setup();
 	/**
 	* Render everything and handle entities in the window.
