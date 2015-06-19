@@ -4,7 +4,7 @@
 #include "SDL2/SDL_image.h"
 #include "Window.hpp"
 
-int main(int, char**) {
+int run() {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
 		std::cerr << "Could not init SDL!" << std::endl
 		<< "[Error] SDL_Init failed: " << SDL_GetError();
@@ -28,8 +28,12 @@ int main(int, char**) {
 
 		window.update();
 	}
+}
+
+int main(int, char**) {
+	int result = run();
 	// release everything here
 	IMG_Quit();
 	SDL_Quit();
-	return 0;
+	return result;
 }
