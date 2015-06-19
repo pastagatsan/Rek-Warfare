@@ -28,6 +28,7 @@ int run() {
 
 		window.update();
 	}
+	return 0;
 }
 
 int main(int, char**) {
