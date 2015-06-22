@@ -52,7 +52,7 @@ void Window::renderAll(SDL_Event* e) {
 		}
 	}
 	// Render everything from here:
-	test.draw(FULL_IMAGE, 0, 0, 500, 500);
+	test->draw(FULL_IMAGE, 0, 0, 500, 500);
 }
 
 void Window::clear() {

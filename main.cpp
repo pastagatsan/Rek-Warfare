@@ -12,8 +12,8 @@ int run() {
 	}
 
 	Window window("Rek Warfare", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600);
-	std::cout << "[Window] x : " << window.getX() << std::endl << "[Window] y : " << window.getY()
-		<< std::endl;
+	std::cout << "[Window] x : " << window.getX() << std::endl;
+	std::cout << "[Window] y : " << window.getY() << std::endl;
 	std::cout << "[Window] width : " << window.getWidth() << std::endl;
 	std::cout << "[Window] height : " <<  window.getHeight() << std::endl;
 

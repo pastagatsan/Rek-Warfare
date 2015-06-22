@@ -40,6 +40,6 @@ private:
 	SDL_Window* m_win = nullptr;
 	SDL_Renderer* m_renderer = nullptr;
 protected:
-	drawer::Texture test;
+	drawer::Texture* test;
 
 };
