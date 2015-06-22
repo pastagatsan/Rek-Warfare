@@ -2,6 +2,7 @@
 
 #include "Entity.hpp"
 #include "Mob.hpp"
+
 #include <string>
 
 namespace entity {
@@ -18,10 +19,12 @@ namespace mob {
 		void render() override;
 
 	private:
-		std::string p_username;
-		Class p_class;
-		int p_x, p_y;
-		int id;
+		SDL_Rect m_box;
+		std::string m_username;
+		Class m_class;
+		int m_health;
+		int m_x, m_y;
+		int m_id;
 	};
 }
 }
