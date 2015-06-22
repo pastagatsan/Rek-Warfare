@@ -5,6 +5,11 @@
 
 namespace drawer {
 
+Texture* createTexture(SDL_Texture* tex, SDL_Renderer* rend) {
+	Texture tx(tex, rend);
+	return &tx;
+}
+
 Texture::Texture(SDL_Texture* tex, SDL_Renderer* rend) {
 	m_renderer = rend;
 	m_texture = tex;
@@ -17,26 +22,31 @@ Texture::~Texture() {
 }
 
 void Texture::draw(SpriteTile tile, int x, int y, int w, int h) {
-	SDL_Rect* sec, *size;
+	SDL_Rect sec, size;
+	sec = size = {0, 0, 0, 0};
+
+	size.x = x;
+	size.y = y;
+	size.w = w;
+	size.h = h;
 
 	if (tile.xoff == FULL_IMAGE.xoff && // Possibly OR them?
 		tile.yoff == FULL_IMAGE.yoff &&
 		tile.tw == FULL_IMAGE.tw &&
 		tile.th == FULL_IMAGE.th) {
-		sec = nullptr;
+		drawTexture(m_renderer, m_texture, nullptr, &size);
 	} else {
-		sec->w = tile.tw;
-		sec->h = tile.th;
-		sec->x = tile.xoff * sec->w;
-		sec->y = tile.yoff * sec->h;
+		sec.w = tile.tw;
+		sec.h = tile.th;
+		sec.x = tile.xoff * sec.w;
+		sec.y = tile.yoff * sec.h;
+		drawTexture(m_renderer, m_texture, &sec, &size);
 	}
 
-	size->x = x;
-	size->y = y;
-	size->w = w;
-	size->h = h;
+}
 
-	drawTexture(m_renderer, m_texture, sec, size);
+void Texture::setAlpha(Uint8 alpha) {
+	SDL_SetTextureAlphaMod(m_texture, alpha);
 }
 
 void Texture::setColor(Uint8 r, Uint8 g, Uint8 b) {

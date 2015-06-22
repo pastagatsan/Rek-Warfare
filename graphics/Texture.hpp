@@ -2,6 +2,7 @@
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
+#include "Drawer.hpp"
 
 #include <string>
 
@@ -26,6 +27,7 @@ namespace drawer {
 		std::string path;
 	} TextureInfo;
 
+
 	class Texture {
 
 	public:
@@ -43,6 +45,7 @@ namespace drawer {
 		 * @h - height
 		 */
 		void draw(SpriteTile tile, int x, int y, int w, int h);
+		void setAlpha(Uint8 alpha);
 		/**
 		 * Sets the texture's color, set to NULL for uncolored texture
 		 */
@@ -57,4 +60,6 @@ namespace drawer {
 		std::string m_path;
 
 	};
+
+	Texture* createTexture(SDL_Texture* tex, SDL_Renderer* rend);
 }
