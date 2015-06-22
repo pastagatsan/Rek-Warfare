@@ -34,7 +34,7 @@ public:
 
 private:
 	std::string m_title;
-	int m_x, m_y, m_width, m_height;
+	int m_x = 0, m_y = 0, m_width = 0, m_height = 0;
 	bool m_logging = false;
 	bool m_running = true;
 	SDL_Window* m_win = nullptr;

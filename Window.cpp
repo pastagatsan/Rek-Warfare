@@ -8,18 +8,17 @@
 #include <iostream>
 #include <string>
 
-Window::Window(std::string title, int x, int y, int width, int height) {
-	m_title = title;
-	m_x = x;
-	m_y = y;
-	m_width = width;
-	m_height = height;
+Window::Window(std::string title, int x, int y, int width, int height)
+	: m_title(title), m_x(x), m_y(y), m_width(width), m_height(height){
 	// Init our stuff
 	m_win = SDL_CreateWindow(m_title.c_str(), m_x, m_y, m_width, m_height,
 		SDL_WINDOW_SHOWN);
 	if (!m_win) {
 		std::cerr << "[Error] Win::m_win creation failed: " << SDL_GetError() << std::endl;
 	}
+
+	// Assign m_x/y to proper values
+	SDL_GetWindowPosition(m_win, &m_x, &m_y);
 
 	m_renderer = SDL_CreateRenderer(m_win, -1, SDL_RENDERER_ACCELERATED);
 	if (!m_renderer) {
