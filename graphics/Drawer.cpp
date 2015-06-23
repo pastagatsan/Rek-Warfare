@@ -29,4 +29,12 @@ void drawTexture(SDL_Renderer* rend, SDL_Texture* texture, SDL_Rect* fraction, S
     SDL_RenderCopy(rend, texture, fraction, size);
 }
 
+void setColor(SDL_Texture* texture, Uint8 r, Uint8 g, Uint8 b) {
+    SDL_SetTextureColorMod(texture, r, g, b);
+}
+
+void setAlpha(SDL_Texture* texture, Uint8 alpha) {
+    SDL_SetTextureAlphaMod(texture, alpha);
+}
+
 }

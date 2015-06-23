@@ -3,13 +3,12 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include "graphics/Drawer.hpp"
-#include "graphics/Texture.hpp"
 
 #include <iostream>
 #include <string>
 
 Window::Window(std::string title, int x, int y, int width, int height)
-	: m_title(title), m_x(x), m_y(y), m_width(width), m_height(height){
+	: m_title(title), m_x(x), m_y(y), m_width(width), m_height(height) {
 	// Init our stuff
 	m_win = SDL_CreateWindow(m_title.c_str(), m_x, m_y, m_width, m_height,
 		SDL_WINDOW_SHOWN);
@@ -24,6 +23,8 @@ Window::Window(std::string title, int x, int y, int width, int height)
 	if (!m_renderer) {
 		std::cerr << "[Error] Win::m_renderer creation failed: " << SDL_GetError() << std::endl;
 	}
+
+	SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
 }
 
 Window::~Window() {
@@ -39,7 +40,7 @@ void Window::setup() {
 	} else {
 		std::cout << "SDL_image initialized successfully!" << std::endl;
 	}
-	test = createTexture(loadTexture(m_renderer, "resource/biopro_emblem.png"), m_renderer);
+	test = loadTexture(m_renderer, "resource/raider_emblem.png");
 }
 
 void Window::renderAll(SDL_Event* e) {
@@ -51,7 +52,7 @@ void Window::renderAll(SDL_Event* e) {
 		}
 	}
 	// Render everything from here:
-	test->draw(FULL_IMAGE, 0, 0, 500, 500);
+	drawTexture(m_renderer, test);
 }
 
 void Window::clear() {
