@@ -41,6 +41,7 @@ void Window::setup() {
 		std::cout << "SDL_image initialized successfully!" << std::endl;
 	}
 	test = loadTexture(m_renderer, "resource/raider_emblem.png");
+	toggleLog();
 }
 
 Uint8 rgb[3] = {0, 0, 0};
@@ -55,26 +56,36 @@ void Window::renderAll(SDL_Event* e) {
 				switch (e->key.keysym.sym) {
 					case SDLK_r:
 						rgb[0] += 16;
+						log(EVENT, "r has been pressed.");
 						break;
 					case SDLK_f:
 						rgb[0] -= 16;
+						log(EVENT, "f has been pressed.");
 						break;
 					case SDLK_t:
 						rgb[1] += 16;
+						log(EVENT, "t has been pressed.");
 						break;
 					case SDLK_g:
 						rgb[1] -= 16;
+						log(EVENT, "g has been pressed.");
 						break;
 					case SDLK_y:
 						rgb[2] += 16;
+						log(EVENT, "y has been pressed.");
 						break;
 					case SDLK_h:
 						rgb[2] -= 16;
+						log(EVENT, "h has been pressed.");
 						break;
 					case SDLK_RETURN:
 						rgb[2] = rgb[1] = rgb[0] = 0;
+						log(EVENT, "return has been pressed.");
 						break;
 				}
+				log(INFO, "RED value is " + std::to_string(rgb[0]));
+				log(INFO, "GREEN value is " + std::to_string(rgb[1]));
+				log(INFO, "BLUE value is " + std::to_string(rgb[2]));
 				break;
 		}
 	}
@@ -92,6 +103,29 @@ void Window::update() {
 }
 
 void Window::toggleLog() {
-	m_logging = (!m_logging) ? false : true;
-	std::cout << "[Event] Logging is now " << ((m_logging) ? "disabled" : "Enabled") << std::endl;
+	m_logging = (!m_logging) ? true : false;
+	std::cout << "[Status] Logging is now " << m_logging << std::endl;
+}
+
+void Window::log(Logtype t, std::string message) {
+	if (m_logging) {
+		switch (t) {
+			case EVENT:
+				std::cout << "[Event] ";
+				break;
+			case ERROR:
+				std::cout << "[Error] ";
+				break;
+			case WARNING:
+				std::cout << "[Warning] ";
+				break;
+			case STATUS:
+				std::cout << "[Status] ";
+				break;
+			case INFO:
+				std::cout << "[Info] ";
+				break;
+		}
+		std::cout << message << std::endl;
+	}
 }

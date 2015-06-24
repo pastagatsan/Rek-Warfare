@@ -5,6 +5,8 @@
 
 #include <string>
 
+enum Logtype { EVENT, ERROR, WARNING, STATUS, INFO };
+
 class Window {
 
 public:
@@ -22,6 +24,11 @@ public:
 	* Toggle logging of window events & other game events
 	*/
 	void toggleLog();
+	/**
+	* Log information, only if logging is enabled
+	*/
+	void log(Logtype t, std::string message);
+
 	int getWidth() { return m_width; }
 	int getHeight() { return m_height; }
 	int getX() { return m_x; }
