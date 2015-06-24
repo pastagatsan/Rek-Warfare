@@ -17,6 +17,6 @@ namespace drawer {
      */
 	void drawTexture(SDL_Renderer* rend, SDL_Texture* texture, SDL_Rect* fraction=nullptr,
 		SDL_Rect* size=nullptr);
-	void setColor(SDL_Texture* texture, Uint8 r=NULL, Uint8 g=NULL, Uint8 b=NULL);
+	void setColor(SDL_Texture* texture, Uint8 r=0, Uint8 g=0, Uint8 b=0);
 	void setAlpha(SDL_Texture* texture, Uint8 alpha=1);
 }

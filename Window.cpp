@@ -43,15 +43,43 @@ void Window::setup() {
 	test = loadTexture(m_renderer, "resource/raider_emblem.png");
 }
 
+Uint8 rgb[3] = {0, 0, 0};
+
 void Window::renderAll(SDL_Event* e) {
 	while (SDL_PollEvent(e)) {
 		switch (e->type) {
 			case SDL_QUIT:
 				m_running = false;
 				break;
+			case SDL_KEYDOWN:
+				switch (e->key.keysym.sym) {
+					case SDLK_r:
+						rgb[0] += 16;
+						break;
+					case SDLK_f:
+						rgb[0] -= 16;
+						break;
+					case SDLK_t:
+						rgb[1] += 16;
+						break;
+					case SDLK_g:
+						rgb[1] -= 16;
+						break;
+					case SDLK_y:
+						rgb[2] += 16;
+						break;
+					case SDLK_h:
+						rgb[2] -= 16;
+						break;
+					case SDLK_RETURN:
+						rgb[2] = rgb[1] = rgb[0] = 0;
+						break;
+				}
+				break;
 		}
 	}
 	// Render everything from here:
+	setColor(test, rgb[0], rgb[1], rgb[2]);
 	drawTexture(m_renderer, test);
 }
 
