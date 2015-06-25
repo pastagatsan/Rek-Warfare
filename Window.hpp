@@ -5,8 +5,6 @@
 
 #include <string>
 
-enum Logtype { EVENT, ERROR, WARNING, STATUS, INFO };
-
 class Window {
 
 public:
@@ -20,14 +18,6 @@ public:
 	void renderAll(SDL_Event* e);
 	void clear();
 	void update();
-	/**
-	* Toggle logging of window events & other game events
-	*/
-	void toggleLog();
-	/**
-	* Log information, only if logging is enabled
-	*/
-	void log(Logtype t, std::string message);
 
 	int getWidth() { return m_width; }
 	int getHeight() { return m_height; }
@@ -41,7 +31,6 @@ public:
 private:
 	std::string m_title;
 	int m_x = 0, m_y = 0, m_width = 0, m_height = 0;
-	bool m_logging = false;
 	bool m_running = true;
 	SDL_Window* m_win = nullptr;
 	SDL_Renderer* m_renderer = nullptr;

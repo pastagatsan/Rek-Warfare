@@ -3,6 +3,7 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include "graphics/Drawer.hpp"
+#include "Log.hpp"
 
 #include <iostream>
 #include <string>
@@ -41,7 +42,7 @@ void Window::setup() {
 		std::cout << "SDL_image initialized successfully!" << std::endl;
 	}
 	test = loadTexture(m_renderer, "resource/raider_emblem.png");
-	toggleLog();
+	LOGGING = true;
 }
 
 Uint8 rgb[3] = {0, 0, 0};
@@ -100,32 +101,4 @@ void Window::clear() {
 
 void Window::update() {
 	SDL_RenderPresent(m_renderer);
-}
-
-void Window::toggleLog() {
-	m_logging = (!m_logging) ? true : false;
-	std::cout << "[Status] Logging is now " << m_logging << std::endl;
-}
-
-void Window::log(Logtype t, std::string message) {
-	if (m_logging) {
-		switch (t) {
-			case EVENT:
-				std::cout << "[Event] ";
-				break;
-			case ERROR:
-				std::cout << "[Error] ";
-				break;
-			case WARNING:
-				std::cout << "[Warning] ";
-				break;
-			case STATUS:
-				std::cout << "[Status] ";
-				break;
-			case INFO:
-				std::cout << "[Info] ";
-				break;
-		}
-		std::cout << message << std::endl;
-	}
 }
