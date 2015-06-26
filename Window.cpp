@@ -8,6 +8,8 @@
 #include <iostream>
 #include <string>
 
+using namespace logger;
+
 Window::Window(std::string title, int x, int y, int width, int height)
 	: m_title(title), m_x(x), m_y(y), m_width(width), m_height(height) {
 	// Init our stuff
@@ -42,7 +44,6 @@ void Window::setup() {
 		std::cout << "SDL_image initialized successfully!" << std::endl;
 	}
 	test = loadTexture(m_renderer, "resource/raider_emblem.png");
-	LOGGING = true;
 }
 
 Uint8 rgb[3] = {0, 0, 0};
@@ -92,7 +93,7 @@ void Window::renderAll(SDL_Event* e) {
 	}
 	// Render everything from here:
 	setColor(test, rgb[0], rgb[1], rgb[2]);
-	drawTexture(m_renderer, test);
+	drawTexture(m_renderer, test, 0, 0, getWidth(), getHeight());
 }
 
 void Window::clear() {

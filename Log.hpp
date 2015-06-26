@@ -2,10 +2,10 @@
 
 #include <string>
 
+namespace logger {
 enum Logtype { EVENT, ERROR, WARNING, STATUS, INFO };
-
-bool LOGGING = false;
 /**
-* Log information, only if logging is enabled
+* Log information
 */
 void log(Logtype t, std::string message);
+}
