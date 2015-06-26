@@ -25,7 +25,7 @@ SDL_Texture* loadTexture(SDL_Renderer* rend, std::string path) {
 	return tex;
 }
 
-void drawTexture(SDL_Renderer* rend, SDL_Texture* texture, int x, int y int w, int h,
+void drawTexture(SDL_Renderer* rend, SDL_Texture* texture, int x, int y, int w, int h,
 	int xoff, int yoff, int tileW, int tileH) {
     SDL_Rect fraction = { xoff, yoff, tileW, tileH };
     SDL_Rect size = { x, y, w, h };
