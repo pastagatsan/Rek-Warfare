@@ -11,7 +11,7 @@ void log(Logtype t, std::string message) {
 			std::cout << "[Event] ";
 			break;
 		case ERROR:
-			std::cout << "[Error] ";
+			std::cerr << "[Error] " << messsage << std::endl;
 			break;
 		case WARNING:
 			std::cout << "[Warning] ";
@@ -23,6 +23,7 @@ void log(Logtype t, std::string message) {
 			std::cout << "[Info] ";
 			break;
 	}
-	std::cout << message << std::endl;
+	if (t != ERROR)
+		std::cout << message << std::endl;
 }
 }
