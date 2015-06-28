@@ -5,7 +5,13 @@ Awesome 2D Platform shooting game
 
 <i>Also:</i> Check out another project by a group of my friends called ![zordzman-plus-plus](https://github.com/TeamLe-Shop/zordzman-plus-plus)!
 
-# SDL2
+# Dependencies
 This project uses ![SDL2](http://libsdl.org/)
 
-Including: ![SDL2_image](http://www.libsdl.org/projects/SDL_image/)
+Including:
+
+![SDL2_image](http://www.libsdl.org/projects/SDL_image/)
+
+![SDL2_ttf](http://www.libsdl.org/projects/SDL_ttf/)
+
+And <i>eventually</i> possibly SDL2_net
