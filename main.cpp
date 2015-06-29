@@ -40,7 +40,7 @@ int run(int argc, char* argv[]) {
 	}
 
 	if (window_width < 1 || window_height < 1) {
-		std::cout << "Oh boy. You can't have a window smaller than 50x50!" << std::endl;
+		std::cout << "Oh boy. You can't have a window smaller than 1x1!" << std::endl;
 		return 1;
 	}
 
