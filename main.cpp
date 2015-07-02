@@ -26,7 +26,7 @@ int run(int argc, char* argv[]) {
 			} else {
 				window_width = std::stoi(argv[i + 1]);
 			}
-		} else if (strcmp(argv[i], "-h"))
+		} else if (strcmp(argv[i], "-h")) {
 			if (i == (argc - 1)) {
 				std::cout << "More parameters are needed for '-h'" << std::endl;
 				return 1;
