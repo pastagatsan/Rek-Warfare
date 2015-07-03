@@ -1,5 +1,5 @@
 #include "Tile.hpp"
-#include "Entity.hpp"
+#include "../ent/Entity.hpp"
 
 namespace entity {
 namespace map {
