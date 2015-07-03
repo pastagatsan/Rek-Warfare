@@ -2,6 +2,9 @@
 
 #include "SDL2/SDL.h"
 #include "graphics/Drawer.hpp"
+#include "ent/Entity.hpp"
+#include "ent/Mob.hpp"
+#include "ent/Player.hpp"
 
 #include <string>
 
@@ -35,6 +38,6 @@ private:
 	SDL_Window* m_win = nullptr;
 	SDL_Renderer* m_renderer = nullptr;
 protected:
-	SDL_Texture* test = nullptr;
+	entity::mob::Player* player = nullptr;
 
 };

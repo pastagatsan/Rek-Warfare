@@ -4,11 +4,12 @@
 #include "SDL2/SDL_image.h"
 #include "graphics/Drawer.hpp"
 #include "Log.hpp"
+#include "ent/Entity.hpp"
+#include "ent/Mob.hpp"
+#include "ent/Player.hpp"
 
 #include <iostream>
 #include <string>
-
-using namespace logger;
 
 Window::Window(std::string title, int x, int y, int width, int height)
 	: m_title(title), m_x(x), m_y(y), m_width(width), m_height(height) {
@@ -16,7 +17,8 @@ Window::Window(std::string title, int x, int y, int width, int height)
 	m_win = SDL_CreateWindow(m_title.c_str(), m_x, m_y, m_width, m_height,
 		SDL_WINDOW_SHOWN);
 	if (!m_win) {
-		std::cerr << "[Error] Win::m_win creation failed: " << SDL_GetError() << std::endl;
+		std::string err = SDL_GetError();
+		logger::log(logger::ERROR, "Window failed to create!: " + err);
 	}
 
 	// Assign m_x/y to proper values
@@ -24,7 +26,8 @@ Window::Window(std::string title, int x, int y, int width, int height)
 
 	m_renderer = SDL_CreateRenderer(m_win, -1, SDL_RENDERER_ACCELERATED);
 	if (!m_renderer) {
-		std::cerr << "[Error] Win::m_renderer creation failed: " << SDL_GetError() << std::endl;
+		std::string err = SDL_GetError();
+		logger::log(logger::ERROR, "Renderer creation failed: " + err);
 	}
 
 	SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
@@ -36,17 +39,18 @@ Window::~Window() {
 }
 
 using namespace drawer;
+using namespace entity::mob;
 
 void Window::setup() {
 	if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG) {
-		std::cerr << "Could not init SDL_image! Reason: " << IMG_GetError() << std::endl;
+		std::string err = IMG_GetError();
+		logger::log(logger::ERROR, "Could not init SDL_image! Reason: " + err);
 	} else {
-		std::cout << "SDL_image initialized successfully!" << std::endl;
+		logger::log(logger::STATUS, "SDL_Image initialized successfully!");
 	}
-	test = loadTexture(m_renderer, "resource/raider_emblem.png");
-}
 
-Uint8 rgb[3] = {0, 0, 0};
+	player = new Player(RAIDER, "Rodrun");
+}
 
 void Window::renderAll(SDL_Event* e) {
 	while (SDL_PollEvent(e)) {
@@ -54,46 +58,11 @@ void Window::renderAll(SDL_Event* e) {
 			case SDL_QUIT:
 				m_running = false;
 				break;
-			case SDL_KEYDOWN:
-				switch (e->key.keysym.sym) {
-					case SDLK_r:
-						rgb[0] += 16;
-						log(EVENT, "r has been pressed.");
-						break;
-					case SDLK_f:
-						rgb[0] -= 16;
-						log(EVENT, "f has been pressed.");
-						break;
-					case SDLK_t:
-						rgb[1] += 16;
-						log(EVENT, "t has been pressed.");
-						break;
-					case SDLK_g:
-						rgb[1] -= 16;
-						log(EVENT, "g has been pressed.");
-						break;
-					case SDLK_y:
-						rgb[2] += 16;
-						log(EVENT, "y has been pressed.");
-						break;
-					case SDLK_h:
-						rgb[2] -= 16;
-						log(EVENT, "h has been pressed.");
-						break;
-					case SDLK_RETURN:
-						rgb[2] = rgb[1] = rgb[0] = 0;
-						log(EVENT, "return has been pressed.");
-						break;
-				}
-				log(INFO, "RED value is " + std::to_string(rgb[0]));
-				log(INFO, "GREEN value is " + std::to_string(rgb[1]));
-				log(INFO, "BLUE value is " + std::to_string(rgb[2]));
-				break;
 		}
 	}
+	player->update();
 	// Render everything from here:
-	setColor(test, rgb[0], rgb[1], rgb[2]);
-	drawTexture(m_renderer, test, 0, 0, getWidth(), getHeight());
+	player->render(m_renderer);
 }
 
 void Window::clear() {
