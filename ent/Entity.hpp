@@ -37,8 +37,10 @@ namespace entity {
 
 	public:
 		Entity(SDL_Rect box);
+		Entity(SDL_Rect box, int id);
 		virtual ~Entity();
-		virtual void render();
+		virtual void update();
+		virtual void render(SDL_Renderer* rend) const;
 		void setID(int id) { m_id = id; }
 		void setX(int x) { m_box.x = x; }
 		void setY(int y) { m_box.y = y; }
