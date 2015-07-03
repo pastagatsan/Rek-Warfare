@@ -24,10 +24,13 @@ namespace mob {
 		void update() override;
 		void input();
 		void render(SDL_Renderer* rend) const override;
-		Class getClass() { return m_class; }
 	private:
 		std::string m_username;
 		Class m_class;
+	public:
+		std::string getUsername();
+		Class getClass() { return m_class; }
+
 	};
 }
 }
