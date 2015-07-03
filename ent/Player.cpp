@@ -50,6 +50,10 @@ namespace mob {
 		}
 	}
 
+	std::string getUsername() {
+		return m_username;
+	}
+
 	void Player::update() { }
 
 	void Player::input() {
