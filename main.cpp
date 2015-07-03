@@ -15,7 +15,7 @@ int run(int argc, char* argv[]) {
 			std::cout << "-w\tSets the window width" << std::endl;
 			std::cout << "-h\tSets the window height" << std::endl;
 		}
-
+	}
 	// TODO: Handle options '-w' and '-h'
 
 	if (window_width < 1 || window_height < 1) {
