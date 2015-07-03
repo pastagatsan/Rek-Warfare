@@ -10,36 +10,13 @@ int run(int argc, char* argv[]) {
 	int window_height = 600;
 
 	if (argc > 1){
-		if (strcmp(argv[1], "--help") || strcmp(argv[1], "-h")) {
+		if (strcmp(argv[1], "--help")) {
 			std::cout << "HELP" << std::endl;
 			std::cout << "-w\tSets the window width" << std::endl;
 			std::cout << "-h\tSets the window height" << std::endl;
 		}
 
-		for (auto i = 0; i < argc; i++) {
-			if (strcmp(argv[i], "-w")) {
-				if (i == (argc -1)) {
-					std::cout << "More paramaters are needed for '-w'" << std::endl;
-					return 1;
-				} else if (strcmp(argv[i + 1], "-h")){
-					std::cout << "More parameteres are needed for '-w'" << std::endl;
-					return 1;
-				} else {
-					window_width = std::stoi(argv[i + 1]);
-				}
-			} else if (strcmp(argv[i], "-h")) {
-				if (i == (argc - 1)) {
-					std::cout << "More parameters are needed for '-h'" << std::endl;
-					return 1;
-				} else if (strcmp(argv[i + 1], "-w")){
-					std::cout << "More parameteres are needed for '-h'" << std::endl;
-					return 1;
-				} else {
-					window_height = std::stoi(argv[i + 1]);
-				}
-			}
-		}
-	}
+	// TODO: Handle options '-w' and '-h'
 
 	if (window_width < 1 || window_height < 1) {
 		std::cout << "Oh boy. You can't have a window smaller than 1x1!" << std::endl;
