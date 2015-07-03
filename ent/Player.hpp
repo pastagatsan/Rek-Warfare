@@ -8,6 +8,12 @@
 namespace entity {
 namespace mob {
 
+	const unsigned int DEFAULT_RAIDER_FULL_HEALTH = 200;
+	const unsigned int DEFAULT_BIOPRO_FULL_HEALTH = 155;
+	const unsigned int DEFAULT_MARINER_FULL_HEALTH = 135;
+	const unsigned int DEFAULT_SORCERER_FULL_HEALTH = 180;
+	const unsigned int DEFAULT_TECHMASTER_FULL_HEALTH = 155;
+
 	enum Class { RAIDER, MARINER, SORCERER, TECH_MASTER, BIO_PRO };
 	std::string classNameToStr(Class cn);
 

@@ -30,14 +30,32 @@ namespace mob {
 	}
 
 	Player::Player(Class c, std::string username)
-		: Mob(m_id, m_box, m_speed, m_health), m_class(c), m_username(username) { }
+		: Mob(m_box, m_speed, m_health), m_class(c), m_username(username) {
+		switch (c) {
+			case RAIDER:
+				m_health = DEFAULT_RAIDER_FULL_HEALTH;
+				break;
+			case MARINER:
+				m_health = DEFAULT_MARINER_FULL_HEALTH;
+				break;
+			case SORCERER:
+				m_health = DEFAULT_SORCERER_FULL_HEALTH;
+				break;
+			case TECH_MASTER:
+				m_health = DEFAULT_TECHMASTER_FULL_HEALTH;
+				break;
+			case BIO_PRO:
+				m_health = DEFAULT_BIOPRO_FULL_HEALTH;
+				break;
+		}
+	}
 
 	void Player::update() { }
 
 	void Player::input() {
 		const Uint8* key = SDL_GetKeyboardState(nullptr);
 		if (key[SDL_SCANCODE_W]) {
-			// TODO: Decide weather SPACE or W wi		return ll be the default jump key
+			// Shouldn't be messed with until ladders come about
 		} else if (key[SDL_SCANCODE_S]) {
 
 		}
@@ -45,8 +63,12 @@ namespace mob {
 
 		} else if (key[SDL_SCANCODE_D]) {
 			// Shouldn't be messed with until ladders come about
+		} else if (key[SDL_SCANCODE_SPACE]) {
+			// Implement jumping when physics are available
 		}
 	}
-	void Player::render(SDL_Renderer* rend) const { }
+	void Player::render(SDL_Renderer* rend) const {
+
+	}
 }
 }
