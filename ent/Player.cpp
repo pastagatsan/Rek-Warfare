@@ -50,7 +50,7 @@ namespace mob {
 		}
 	}
 
-	std::string getUsername() {
+	std::string Player::getUsername() {
 		return m_username;
 	}
 
