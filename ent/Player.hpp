@@ -9,22 +9,19 @@ namespace entity {
 namespace mob {
 
 	enum Class { RAIDER, MARINER, SORCERER, TECH_MASTER, BIO_PRO };
-	std::string className(Class cn);
+	std::string classNameToStr(Class cn);
 
 	class Player : public Mob {
 
 	public:
 		Player(Class c, std::string username);
+		void update() override;
 		void input();
-		void render() override;
-
+		void render(SDL_Renderer* rend) const override;
+		Class getClass() { return m_class; }
 	private:
-		SDL_Rect m_box;
 		std::string m_username;
 		Class m_class;
-		int m_health;
-		int m_x, m_y;
-		int m_id;
 	};
 }
 }
