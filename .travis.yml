@@ -1,3 +1,7 @@
 language: cpp
-
-script: cmake . && make
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y libsdl2-2.0.0 libsdl2-dev
+script:
+  - cmake .
+  - make
