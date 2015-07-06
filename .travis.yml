@@ -2,7 +2,7 @@ language: cpp
 before_install:
   - sudo apt-get update -qq
   - pwd
-  - sudo apt-get install -y libsdl2.0-0 libsdl2-devel libsdl2-image-2.0-0 libsdl2-image-dev libsdl2-ttf-2.0-0 libsdl2-ttf-devel
+  - sudo apt-get install -qq libsdl2.0-0 libsdl2-devel libsdl2-image-2.0-0 libsdl2-image-dev libsdl2-ttf-2.0-0 libsdl2-ttf-devel
 script:
   - pwd
   - mkdir build
