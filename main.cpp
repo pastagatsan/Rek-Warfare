@@ -1,33 +1,52 @@
 #include <iostream>
 #include <string>
+#include <stdexcept>
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include "Window.hpp"
+#include "Log.hpp"
 
 int run(int argc, char* argv[]) {
 	int window_width = 800;
 	int window_height = 600;
 
 	if (argc > 1){
-		if (strcmp(argv[1], "--help")) {
+		if (strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "help") == 0) {
 			std::cout << "HELP" << std::endl;
+			std::cout << "Default window dimensions are " << window_width
+				<< "x" << window_height << std::endl;
 			std::cout << "-w\tSets the window width" << std::endl;
 			std::cout << "-h\tSets the window height" << std::endl;
+			return 0; // We don't want to run the game
+		} else {
+			for (int i = 0; i < argc; i++){
+				try {
+					if ((strcmp(argv[i], "-w") == 0) && (i + 1 != argc)) {
+						window_width = std::stoi(argv[i + 1]);
+					} else if ((strcmp(argv[i], "-h") == 0) && (i + 1 != argc)) {
+						window_height = std::stoi(argv[i + 1]);
+					}
+				} catch (const std::invalid_argument& inva) {
+					logger::log(logger::ERROR, "No conversion could be made (stoi)");
+				} catch (const std::out_of_range& oor) {
+					logger::log(logger::ERROR, "Integer size out of range (stoi)");
+				}
+			}
 		}
 	}
-	// TODO: Handle options '-w' and '-h'
 
-	if (window_width < 1 || window_height < 1) {
-		std::cout << "Oh boy. You can't have a window smaller than 1x1!" << std::endl;
+	if (window_width < 100 || window_height < 100) {
+		logger::log(logger::ERROR, "Why would window size be less than 100x100!?");
 		return 1;
 	}
 
-	std::cout << "New window dimensions are " << window_width << "x" << window_height << std::endl;
+	logger::log(logger::INFO, "New window dimensions are " + std::to_string(window_width)
+		+ "x" + std::to_string(window_height));
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-		std::cerr << "Could not init SDL!" << std::endl
-		<< "[Error] SDL_Init failed: " << SDL_GetError();
+		std::string err = SDL_GetError();
+		logger::log(logger::ERROR, "Couldn't init SDL! Reason: " + err);
 		return 1;
 	}
 
