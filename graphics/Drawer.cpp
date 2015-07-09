@@ -26,9 +26,9 @@ SDL_Texture* loadTexture(SDL_Renderer* rend, std::string path) {
 
 void drawTexture(SDL_Renderer* rend, SDL_Texture* texture, int x, int y, int w, int h,
 	int xoff, int yoff, int tileW, int tileH) {
-    SDL_Rect fraction = { xoff, yoff, tileW, tileH };
-    SDL_Rect size = { x, y, w, h };
-	SDL_RenderCopy(rend, texture, &fraction, &size);
+	SDL_Rect fraction = { xoff, yoff, tileW, tileH };
+	SDL_Rect size = { x, y, w, h };
+	SDL_RenderCopy(rend, texture, (tileW < 0 && tileH < 0) ? NULL : &fraction, &size);
 }
 
 void setColor(SDL_Texture* texture, Uint8 r, Uint8 g, Uint8 b) {
