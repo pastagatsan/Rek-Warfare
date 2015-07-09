@@ -1,7 +1,6 @@
 # Rek-Warfare
-[![Build Status](https://travis-ci.org/Digital-Roadrunner/Rek-Warfare.svg?branch=master)](https://travis-ci.org/Digital-Roadrunner/Rek-Warfare)
 
-Awesome 2D Platform shooting game
+Awesome 2D Platform multiplayer shooting game
 
 The game is planned to have:
 * Deathmatch gamemode
