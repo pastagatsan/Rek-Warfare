@@ -49,7 +49,7 @@ void Window::setup() {
 		logger::log(logger::STATUS, "SDL_Image initialized successfully!");
 	}
 
-	player = new Player(RAIDER, "Rodrun");
+	player = new Player(m_renderer, RAIDER, "Rodrun");
 }
 
 void Window::renderAll(SDL_Event* e) {
@@ -62,7 +62,7 @@ void Window::renderAll(SDL_Event* e) {
 	}
 	player->update();
 	// Render everything from here:
-	player->render(m_renderer);
+	player->render();
 }
 
 void Window::clear() {
