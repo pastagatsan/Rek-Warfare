@@ -1,6 +1,7 @@
 #include "Player.hpp"
 #include "Entity.hpp"
 #include "Mob.hpp"
+#include "../Window.hpp"
 #include "SDL2/SDL.h"
 
 #include <string>
@@ -29,8 +30,8 @@ namespace mob {
 		return NULL;
 	}
 
-	Player::Player(Class c, std::string username)
-		: Mob(m_box, m_speed, m_health), m_class(c), m_username(username) {
+	Player::Player(SDL_Renderer* rend, Class c, std::string username)
+		: Mob(m_box, rend, m_speed, m_health), m_class(c), m_username(username) {
 		switch (c) {
 			case RAIDER:
 				m_health = DEFAULT_RAIDER_FULL_HEALTH;
@@ -48,6 +49,8 @@ namespace mob {
 				m_health = DEFAULT_BIOPRO_FULL_HEALTH;
 				break;
 		}
+		// setup
+		//m_inittex = drawer::loadTexture(m_rend, )
 	}
 
 	std::string Player::getUsername() {
@@ -71,8 +74,8 @@ namespace mob {
 			// Implement jumping when physics are available
 		}
 	}
-	void Player::render(SDL_Renderer* rend) const {
-
+	void Player::render() const {
+		drawer::drawTexture(m_rend, m_inittex, m_box.x, m_box.y, m_box.w, m_box.h);
 	}
 }
 }

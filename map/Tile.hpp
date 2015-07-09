@@ -28,10 +28,10 @@ namespace map {
 	class Tile : public Entity {
 
 	public:
-		Tile(ID id);
-		Tile(ID, Mask mask);
+		Tile(SDL_Renderer* rend, ID id);
+		Tile(SDL_Renderer* rend, ID id, Mask mask);
 		void update() override;
-		void render(SDL_Renderer* rend) const override;
+		void render() const override;
 	private:
 		ID m_id = AIR;
 		Mask m_mask;

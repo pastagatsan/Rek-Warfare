@@ -3,9 +3,6 @@
 
 namespace entity {
 
-Entity::Entity(SDL_Rect box) : m_box(box) { }
-Entity::~Entity() { }
-void Entity::update() { }
-void Entity::render(SDL_Renderer* rend) const { }
+Entity::Entity(SDL_Renderer* rend, SDL_Rect box) : m_box(box), m_rend(rend) { }
 
 }

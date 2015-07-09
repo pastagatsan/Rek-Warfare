@@ -11,7 +11,7 @@ namespace mob {
 	class Mob : public Entity {
 
 	public:
-		Mob(SDL_Rect box, int speed, int health);
+		Mob(SDL_Rect box, SDL_Renderer* rend, int speed, int health);
 	protected:
 		int m_speed = 0;
 		double m_health = 0;

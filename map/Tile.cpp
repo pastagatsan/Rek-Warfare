@@ -4,10 +4,10 @@
 namespace entity {
 namespace map {
 
-	Tile::Tile(ID id) : Entity(m_box), m_id(id) { }
-	Tile::Tile(ID id, Mask mask) : Entity(m_box), m_id(id), m_mask(mask) { }
+	Tile::Tile(SDL_Renderer* rend, ID id) : Entity(rend, m_box), m_id(id) { }
+	Tile::Tile(SDL_Renderer* rend, ID id, Mask mask) : Entity(rend, m_box), m_id(id), m_mask(mask) { }
 
 	void Tile::update() { }
-	void Tile::render(SDL_Renderer* rend) const { }
+	void Tile::render() const { }
 }
 }

@@ -4,8 +4,8 @@
 namespace entity {
 namespace mob {
 
-Mob::Mob(SDL_Rect box, int speed, int health)
-	: Entity(box), m_speed(speed), m_health(health) { }
+Mob::Mob(SDL_Rect box, SDL_Renderer* rend, int speed, int health)
+	: Entity(rend, box), m_speed(speed), m_health(health) { }
 
 }
 }

@@ -20,13 +20,14 @@ namespace mob {
 	class Player : public Mob {
 
 	public:
-		Player(Class c, std::string username);
+		Player(SDL_Renderer* rend, Class c, std::string username);
 		void update() override;
 		void input();
-		void render(SDL_Renderer* rend) const override;
+		void render() const override;
 	private:
 		std::string m_username;
 		Class m_class;
+		SDL_Texture* m_inittex = nullptr;
 	public:
 		std::string getUsername();
 		Class getClass() { return m_class; }
