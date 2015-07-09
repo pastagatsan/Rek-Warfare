@@ -1,7 +1,6 @@
 #include "Drawer.hpp"
 
 #include <iostream>
-#include <error.h>
 #include <string>
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
@@ -13,11 +12,11 @@ SDL_Texture* loadTexture(SDL_Renderer* rend, std::string path) {
 	SDL_Surface* load = IMG_Load(path.c_str());
 
 	if (load == nullptr) {
-		std::cerr << "Could not load " << path << "!Reason: " << SDL_GetError() << std::endl;
+		std::cout << "Could not load " << path << "!Reason: " << SDL_GetError() << std::endl;
 	} else {
 		tex = SDL_CreateTextureFromSurface(rend, load);
 		if (tex == nullptr) {
-			std::cerr << "Couldn't create texture from surface " << path << "!Reason: "
+			std::cout << "Couldn't create texture from surface " << path << "!Reason: "
 				<< SDL_GetError() << std::endl;
 		}
 		SDL_FreeSurface(load);
