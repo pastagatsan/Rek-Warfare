@@ -8,8 +8,8 @@
 #include "Log.hpp"
 
 int run(int argc, char* argv[]) {
-	int window_width = 800;
-	int window_height = 600;
+	int window_width = 824;
+	int window_height = 500;
 
 	if (argc > 1){
 		if (strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "help") == 0) {
