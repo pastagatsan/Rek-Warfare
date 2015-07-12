@@ -8,6 +8,9 @@ namespace gui {
 	class Item : public entity::Entity {
 
 	public:
-		Item();
+		Item(SDL_Renderer* rend);
+		void update() override;
+		void render() const override;
+	private:
 	};
 }
