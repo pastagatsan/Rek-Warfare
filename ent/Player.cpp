@@ -31,7 +31,7 @@ namespace mob {
 	}
 
 	Player::Player(SDL_Renderer* rend, Class c, std::string username)
-		: Mob(m_box, rend, m_speed, m_health), m_class(c), m_username(username) {
+		: Mob(m_box, rend, m_speed, m_health), m_username(username), m_class(c) {
 		switch (c) {
 			case RAIDER:
 				m_health = DEFAULT_RAIDER_FULL_HEALTH;
