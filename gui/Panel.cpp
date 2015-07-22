@@ -15,8 +15,6 @@ namespace gui {
 		setH(h);
 	}
 
-	Panel::~Panel() { }
-
 	void Panel::update() {
 		// TODO: Have event stuff here
 	}
