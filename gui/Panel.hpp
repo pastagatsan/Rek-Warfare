@@ -18,7 +18,7 @@ namespace gui {
 		void setBackground(Uint8 c[3]);
 		// Coordinates should be in relation with the panel dimensions
 		// rx <= panel.width && rx + item.width <= panel.width
-		void add(Item*& item, int rx, int ry, int rw, int rh);
+		void add(Item*& item, int rx, int ry, int w, int h);
 		bool backgroundEnabled() const { return m_backgroundEnabled; }
 	private:
 		Item* m_items[256];
