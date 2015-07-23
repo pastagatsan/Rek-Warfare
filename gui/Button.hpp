@@ -12,13 +12,14 @@ namespace gui {
 	class Button : public Item {
 
 	public:
-		Button(SDL_Renderer* rend, std::string text);
+		Button(SDL_Renderer* rend, SDL_Event* nev, std::string text);
 		~Button();
 		virtual void update() override;
 		virtual void render() const override;
 	private:
 		SDL_Texture* m_unpushed = nullptr, *m_pushed = nullptr;
 	protected:
+		SDL_Event* m_ev = nullptr;
 		bool m_pressed = false;
 		std::string m_text = "Button";
 	public:
