@@ -17,7 +17,7 @@ namespace gui {
 		virtual void update() override;
 		virtual void render() const override;
 	private:
-		SDL_Texture* m_unpushed, m_pushed;
+		SDL_Texture* m_unpushed = nullptr, *m_pushed = nullptr;
 	protected:
 		bool m_pressed = false;
 		std::string m_text = "Button";
