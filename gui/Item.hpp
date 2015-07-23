@@ -10,7 +10,6 @@ namespace gui {
 
 	public:
 		Item(SDL_Renderer* rend);
-		~Item();
 		void setRX(int rx) { m_rbox.x = rx; }
 		void setRY(int ry) { m_rbox.y = ry; }
 		int getRX() const { return m_rbox.x; }

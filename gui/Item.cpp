@@ -5,7 +5,5 @@
 namespace entity {
 namespace gui {
 	Item::Item(SDL_Renderer* rend) : Entity(rend, m_box) { }
-
-	Item::~Item() { }
 }
 }
