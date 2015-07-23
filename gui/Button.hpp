@@ -21,11 +21,13 @@ namespace gui {
 	protected:
 		SDL_Event* m_ev = nullptr;
 		bool m_pressed = false;
+		bool m_hovered = false;
 		std::string m_text = "Button";
 	public:
 		void setPressed(bool flag) { m_pressed = flag; }
 		std::string getText() const { return m_text; }
 		bool isPressed() const { return m_pressed; }
+		bool isHovered() const { return m_hovered; }
 	};
 }
 }
