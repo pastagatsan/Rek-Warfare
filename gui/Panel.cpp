@@ -16,10 +16,16 @@ namespace gui {
 	}
 
 	void Panel::update() {
-		// TODO: Have event stuff here
+		for (auto item : m_items) {
+			item->update();
+		}
 	}
 
-	void Panel::render() const { }
+	void Panel::render() const {
+		for (auto item : m_items) {
+			item->render();
+		}
+	}
 
 	void Panel::setBackground(Uint8 c[3]) {
 		m_bg[0] = c[0];
@@ -27,9 +33,12 @@ namespace gui {
 		m_bg[2] = c[2];
 	}
 
-	void Panel::add(Item*& item, int rx, int ry, int rw, int rh) {
+	void Panel::add(Item*& item, int rx, int ry, int w, int h) {
+		item->setRX(rx);
+		item->setRY(ry);
+		item->setW(w);
+		item->setH(h);
 		m_items[i_itemCount] = item;
-		item->setRenderer(m_rend);
 		i_itemCount++;
 	}
 }
