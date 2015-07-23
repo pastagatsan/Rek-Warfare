@@ -14,6 +14,7 @@ include_directories(${SDL2_INCLUDE_DIR})
 add_definitions("-std=c++11 -g -Wall -pedantic-errors -Wextra")
 
 add_executable(rekwarfare main.cpp Log.cpp Window.cpp graphics/Drawer.cpp ent/Entity.cpp
-    ent/Mob.cpp map/Tile.cpp ent/Player.cpp)
+    ent/Mob.cpp ent/Player.cpp map/Tile.cpp gui/Item.cpp gui/Panel.cpp gui/HUD.cpp
+    gui/Button.cpp )
 install(TARGETS rekwarfare DESTINATION bin)
 target_link_libraries(rekwarfare ${SDL2_LIBRARIES} ${SDLIMAGE_LIBRARY} ${SDLTTF_LIBRARY})
