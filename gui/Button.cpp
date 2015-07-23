@@ -9,7 +9,7 @@ namespace gui {
 using namespace drawer;
 
 Button::Button(SDL_Renderer* rend, SDL_Event* nev, std::string text)
-	: Item(m_rend), m_text(text) {
+	: Item(rend), m_text(text) {
 	m_ev = nev;
 	m_unpushed = loadTexture(m_rend, "resource/gui/default_button_unpushed.png");
 	m_pushed = loadTexture(m_rend, "resource/gui/default_button_pushed.png");
