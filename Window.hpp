@@ -5,6 +5,8 @@
 #include "ent/Entity.hpp"
 #include "ent/Mob.hpp"
 #include "ent/Player.hpp"
+#include "gui/Panel.hpp"
+#include "gui/Button.hpp"
 
 #include <string>
 
@@ -39,5 +41,8 @@ private:
 	SDL_Renderer* m_renderer = nullptr;
 protected:
 	entity::mob::Player* player = nullptr;
+	entity::gui::Panel* tparent = nullptr;
+	entity::gui::Button* tbtn = nullptr;
+
 
 };

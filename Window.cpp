@@ -40,6 +40,7 @@ Window::~Window() {
 
 using namespace drawer;
 using namespace entity::mob;
+using namespace entity::gui;
 
 void Window::setup() {
 	if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG) {
@@ -50,6 +51,10 @@ void Window::setup() {
 	}
 
 	player = new Player(m_renderer, RAIDER, "Rodrun");
+
+	tparent = new Panel(m_renderer, 0, 0, 600, 350);
+	tbtn = new Button(m_renderer, nullptr, "Test");
+	tparent->add(tbtn, 0, 0, 300, 200);
 }
 
 void Window::renderAll(SDL_Event* e) {
@@ -60,9 +65,14 @@ void Window::renderAll(SDL_Event* e) {
 				break;
 		}
 	}
+	tbtn->setSDLEvent(e);
+	tparent->update();
+
 	player->update();
 	// Render everything from here:
 	player->render();
+
+	tparent->render();
 }
 
 void Window::clear() {
