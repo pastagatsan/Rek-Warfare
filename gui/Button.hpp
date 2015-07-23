@@ -24,6 +24,7 @@ namespace gui {
 		bool m_hovered = false;
 		std::string m_text = "Button";
 	public:
+		void setSDLEvent(SDL_Event* n) { m_ev = n; }
 		void setPressed(bool flag) { m_pressed = flag; }
 		std::string getText() const { return m_text; }
 		bool isPressed() const { return m_pressed; }
