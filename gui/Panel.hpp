@@ -14,14 +14,17 @@ namespace gui {
 		Panel(SDL_Renderer* rend, int x, int y, int w, int h);
 		void update() override;
 		void render() const override;
+		void setBackgroundEnabled(bool flag) { m_backgroundEnabled = flag; }
 		void setBackground(Uint8 c[3]);
 		// Coordinates should be in relation with the panel dimensions
 		// rx <= panel.width && rx + item.width <= panel.width
 		void add(Item*& item, int rx, int ry, int rw, int rh);
+		bool backgroundEnabled() const { return m_backgroundEnabled; }
 	private:
 		Item* m_items[256];
 		int i_itemCount = 0;
 		Uint8 m_bg[3] = { 0, 0, 0 };
+		bool m_backgroundEnabled = true;
 
 	};
 
