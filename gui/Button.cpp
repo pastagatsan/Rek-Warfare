@@ -21,7 +21,7 @@ Button::~Button() {
 void Button::update() { }
 
 void Button::render() const {
-	drawTexture(m_rend, (m_pressed) ? m_unpushed : m_pushed, m_x, m_y, m_w, m_h);
+	drawTexture(m_rend, (m_pressed) ? m_unpushed : m_pushed, m_box.x, m_box.y, m_box.w, m_box.h);
 }
 
 }
