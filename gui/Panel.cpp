@@ -33,7 +33,7 @@ namespace gui {
 		m_bg[2] = c[2];
 	}
 
-	void Panel::add(Item*& item, int rx, int ry, int w, int h) {
+	void Panel::add(Item* item, int rx, int ry, int w, int h) {
 		item->setRX(rx);
 		item->setRY(ry);
 		item->setW(w);
