@@ -15,6 +15,8 @@ namespace entity {
 		void setY(int y) { m_box.y = y; }
 		void setW(int w) { m_box.w = w; }
 		void setH(int h) { m_box.h = h; }
+		void setSize(int w, int h);
+		void setCoordinates(int x, int y);
 		void setRenderer(SDL_Renderer*& rend) { m_rend = rend; }
 		int getX() const { return m_box.x; }
 		int getY() const { return m_box.y; }
