@@ -57,15 +57,15 @@ void Window::setup() {
 	tparent->add(tbtn, 0, 0, 300, 200);
 }
 
-void Window::renderAll(SDL_Event* e) {
-	while (SDL_PollEvent(e)) {
-		switch (e->type) {
+void Window::renderAll() {
+	while (SDL_PollEvent(&e)) {
+		switch (e.type) {
 			case SDL_QUIT:
 				m_running = false;
 				break;
 		}
 	}
-	tbtn->setSDLEvent(e);
+	tbtn->setSDLEvent(&e);
 	tparent->update();
 
 	player->update();
