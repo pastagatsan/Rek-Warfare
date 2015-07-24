@@ -56,11 +56,10 @@ int run(int argc, char* argv[]) {
 	window.setup();
 
 	bool running = true;
-	SDL_Event e;
 	while ((running = window.isRunning())) {
 		window.clear();
 
-		window.renderAll(&e);
+		window.renderAll();
 
 		window.update();
 	}

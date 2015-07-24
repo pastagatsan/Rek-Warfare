@@ -20,7 +20,7 @@ public:
 	* Render everything and handle entities in the window.
 	* This includes handling of key input and window events
 	*/
-	void renderAll(SDL_Event* e);
+	void renderAll();
 	void clear();
 	void update();
 
@@ -39,6 +39,7 @@ private:
 	bool m_running = true;
 	SDL_Window* m_win = nullptr;
 	SDL_Renderer* m_renderer = nullptr;
+	SDL_Event e;
 protected:
 	entity::mob::Player* player = nullptr;
 	entity::gui::Panel* tparent = nullptr;
