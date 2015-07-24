@@ -3,27 +3,29 @@
 #include "Item.hpp"
 #include "SDL2/SDL.h"
 
+			#include <iostream>
 namespace entity {
 namespace gui {
 	Panel::Panel(SDL_Renderer* rend, int x, int y, int w, int h)
 		: Entity(rend, m_box) {
 		// m_box resizing
-		// TODO: Make a function in Entity to set all sizes (setSize(x,y,w,h))
-		setX(x);
-		setY(y);
-		setW(w);
-		setH(h);
+		setSize(w, h);
+		setCoordinates(x, y);
+		// initialize m_items to nullptr (needed?)
+		for (auto& item : m_items) {
+			item = nullptr;
+		}
 	}
 
 	void Panel::update() {
-		for (auto item : m_items) {
-			item->update();
+		for (int i = 0; i < i_itemCount; i++) {
+			m_items[i]->update();
 		}
 	}
 
 	void Panel::render() const {
-		for (auto item : m_items) {
-			item->render();
+		for (int i = 0; i < i_itemCount; i++) {
+			m_items[i]->render();
 		}
 	}
 
