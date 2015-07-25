@@ -42,8 +42,5 @@ private:
 	SDL_Event e;
 protected:
 	entity::mob::Player* player = nullptr;
-	entity::gui::Panel* tparent = nullptr;
-	entity::gui::Button* tbtn = nullptr;
-
 
 };

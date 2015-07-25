@@ -51,10 +51,10 @@ void Window::setup() {
 	}
 
 	player = new Player(m_renderer, RAIDER, "Rodrun");
-
-	tparent = new Panel(m_renderer, 0, 0, 600, 350);
-	tbtn = new Button(m_renderer, nullptr, "Test");
-	tparent->add(tbtn, 0, 0, 300, 200);
+	player->setX(0);
+	player->setY(0);
+	player->setW(100);
+	player->setH(100);
 }
 
 void Window::renderAll() {
@@ -65,14 +65,10 @@ void Window::renderAll() {
 				break;
 		}
 	}
-	tbtn->setSDLEvent(&e);
-	tparent->update();
 
 	player->update();
 	// Render everything from here:
 	player->render();
-
-	tparent->render();
 }
 
 void Window::clear() {
