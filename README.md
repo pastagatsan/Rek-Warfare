@@ -36,4 +36,3 @@ Including:
 
 ![SDL2_ttf](http://www.libsdl.org/projects/SDL_ttf/)
 
-And *eventually*, possibly SDL2_net
