@@ -32,11 +32,16 @@ void drawTexture(SDL_Renderer* rend, SDL_Texture* texture, int x, int y, int w, 
 }
 
 void setColor(SDL_Texture* texture, Uint8 r, Uint8 g, Uint8 b) {
-	SDL_SetTextureColorMod(texture, r, g, b);
+	if (enable_color_mod)
+		SDL_SetTextureColorMod(texture, r, g, b);
 }
 
 void setAlpha(SDL_Texture* texture, Uint8 alpha) {
 	SDL_SetTextureAlphaMod(texture, alpha);
+}
+
+void enableColorMod(bool flag) {
+	enable_color_mod = flag;
 }
 
 }
