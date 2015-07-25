@@ -2,8 +2,9 @@
 #include "../ent/Entity.hpp"
 #include "Item.hpp"
 #include "SDL2/SDL.h"
-#include <string>
+#include "../graphics/Drawer.hpp"
 #include "../Log.hpp"
+#include <string>
 
 namespace entity {
 namespace gui {
@@ -28,12 +29,30 @@ namespace gui {
 		for (int i = 0; i < i_itemCount; i++) {
 			m_items[i]->render();
 		}
+		if (m_backgroundEnabled) {
+			if (m_backgroundImageEnabled) {
+				drawer::enableColorMod(false);
+				drawer::draw(m_backgroundImage, m_box.x, m_box.y, m_box.w, m_box.h);
+			} else {
+				// TODO: Use SDL_gfxPrimitives.h
+			}
+		}
 	}
 
-	void Panel::setBackground(Uint8 c[3]) {
+	void Panel::setBackgroundColor(Uint8 c[3]) {
 		m_bg[0] = c[0];
 		m_bg[1] = c[1];
 		m_bg[2] = c[2];
+	}
+
+	void Panel::setBackgroundImage(SDL_Texture* bg) {
+		if (bg == nullptr) {
+			m_backgroundImage = nullptr;
+			m_backgroundImageEnabled = false;
+		} else {
+			m_backgroundImageEnabled = true;
+			m_backgroundImage = bg;
+		}
 	}
 
 	void Panel::add(Item* item, int rx, int ry, int w, int h) {
@@ -52,7 +71,7 @@ namespace gui {
 			m_items[i_itemCount] = item;
 			i_itemCount++;
 		} else {
-			logger::log(logger::ERROR, "Panel" + m_name " full! (limit = "
+			logger::log(logger::ERROR, "Panel" + m_name + " full! (limit = "
 				+ std::to_string(MAX_ITEMS) + ")");
 			return;
 		}
