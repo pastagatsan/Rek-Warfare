@@ -50,7 +50,7 @@ namespace mob {
 				break;
 		}
 		// setup
-		//m_inittex = drawer::loadTexture(m_rend, )
+		m_inittex = drawer::loadTexture(m_rend, "resource/raider_emblem.png");
 	}
 
 	std::string Player::getUsername() {
@@ -74,7 +74,10 @@ namespace mob {
 			// Implement jumping when physics are available
 		}
 	}
+
 	void Player::render() const {
+		drawer::enableColorMod(false);
+		drawer::setColor(m_inittex, 25, 25, 35);
 		drawer::drawTexture(m_rend, m_inittex, m_box.x, m_box.y, m_box.w, m_box.h);
 	}
 }
