@@ -67,7 +67,8 @@ int run(int argc, char* argv[]) {
 }
 
 int main(int argc, char* argv[]) {
-	int result = run(argc, argv);
+	int result = 0;
+	result = run(argc, argv);
 	// release everything here
 	IMG_Quit();
 	SDL_Quit();
