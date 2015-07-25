@@ -35,22 +35,25 @@ namespace mob {
 		switch (c) {
 			case RAIDER:
 				m_health = DEFAULT_RAIDER_FULL_HEALTH;
+				m_inittex = drawer::loadTexture(m_rend, "resource/raider_emblem.png");
 				break;
 			case MARINER:
 				m_health = DEFAULT_MARINER_FULL_HEALTH;
+				m_inittex = drawer::loadTexture(m_rend, "resource/mariner_emblem.png");
 				break;
 			case SORCERER:
 				m_health = DEFAULT_SORCERER_FULL_HEALTH;
+				m_inittex = drawer::loadTexture(m_rend, "resource/sorcerer_emblem.png");
 				break;
 			case TECH_MASTER:
 				m_health = DEFAULT_TECHMASTER_FULL_HEALTH;
+				m_inittex = drawer::loadTexture(m_rend, "resource/techmaster_emblem.png");
 				break;
 			case BIO_PRO:
 				m_health = DEFAULT_BIOPRO_FULL_HEALTH;
+				m_inittex = drawer::loadTexture(m_rend, "resource/biopro_emblem.png");
 				break;
 		}
-		// setup
-		m_inittex = drawer::loadTexture(m_rend, "resource/raider_emblem.png");
 	}
 
 	std::string Player::getUsername() {
@@ -76,8 +79,6 @@ namespace mob {
 	}
 
 	void Player::render() const {
-		drawer::enableColorMod(false);
-		drawer::setColor(m_inittex, 25, 25, 35);
 		drawer::drawTexture(m_rend, m_inittex, m_box.x, m_box.y, m_box.w, m_box.h);
 	}
 }
