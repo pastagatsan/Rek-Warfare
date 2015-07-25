@@ -32,7 +32,7 @@ namespace gui {
 		if (m_backgroundEnabled) {
 			if (m_backgroundImageEnabled) {
 				drawer::enableColorMod(false);
-				drawer::draw(m_backgroundImage, m_box.x, m_box.y, m_box.w, m_box.h);
+				drawer::drawTexture(m_rend, m_backgroundImage, m_box.x, m_box.y, m_box.w, m_box.h);
 			} else {
 				// TODO: Use SDL_gfxPrimitives.h
 			}
