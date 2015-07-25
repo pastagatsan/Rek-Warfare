@@ -25,15 +25,16 @@ void Button::update() {
 	if (m_ev->type == SDL_MOUSEMOTION) {
 		int mox, moy;
 		SDL_GetMouseState(&mox, &moy);
-		if (mox >= m_box.x && mox <= m_box.x + m_box.w &&
-			moy >= m_box.y && moy <= m_box.y + m_box.h) {
+		if ((mox >= m_box.x && mox <= m_box.x + m_box.w) &&
+			(moy >= m_box.y && moy <= m_box.y + m_box.h)) {
 			m_hovered = true;
 		} else {
 			m_hovered = false;
 		}
 	}
 	// Check press
-	if (m_ev->type == SDL_MOUSEBUTTONDOWN && m_hovered) {
+	if ((m_ev->type == SDL_MOUSEBUTTONDOWN || m_ev->type == SDL_MOUSEBUTTONUP)
+		&& m_hovered) {
 		m_pressed = (m_pressed) ? false : true;
 	}
 }
