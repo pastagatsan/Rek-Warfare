@@ -18,23 +18,14 @@ namespace map {
 		SUPPORT_BEAM_CONCRETE_CRACKED,
 	};
 
-	enum Mask {
-		GRAFFITI_GAME_LOGO,
-		GRAFFITI_LENNY,
-		GRAFFITI_RAIDER_SKETCH,
-		BRICK_CRACK
-	};
-
 	class Tile : public Entity {
 
 	public:
 		Tile(SDL_Renderer* rend, ID id);
-		Tile(SDL_Renderer* rend, ID id, Mask mask);
 		void update() override;
 		void render() const override;
 	private:
 		ID m_id = AIR;
-		Mask m_mask;
 	};
 }
 }
