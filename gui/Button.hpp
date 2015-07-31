@@ -6,8 +6,8 @@
 
 #include <string>
 
-namespace entity {
-namespace gui {
+namespace rekwarfare {
+namespace client {
 
 	class Button : public Item {
 

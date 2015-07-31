@@ -5,7 +5,8 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 
-namespace drawer {
+namespace rekwarfare {
+namespace client {
 
 SDL_Texture* loadTexture(SDL_Renderer* rend, std::string path) {
 	SDL_Texture* tex = nullptr;
@@ -44,4 +45,5 @@ void enableColorMod(bool flag) {
 	enable_color_mod = flag;
 }
 
+}
 }

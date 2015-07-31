@@ -6,8 +6,8 @@
 
 #include <string>
 
-namespace entity {
-namespace mob {
+namespace rekwarfare {
+namespace client {
 
 	std::string classNameToStr(Class cn) {
 		switch (cn) {
@@ -35,23 +35,23 @@ namespace mob {
 		switch (c) {
 			case RAIDER:
 				m_health = DEFAULT_RAIDER_FULL_HEALTH;
-				m_inittex = drawer::loadTexture(m_rend, "resource/raider_emblem.png");
+				m_inittex = loadTexture(m_rend, "resource/raider_emblem.png");
 				break;
 			case MARINER:
 				m_health = DEFAULT_MARINER_FULL_HEALTH;
-				m_inittex = drawer::loadTexture(m_rend, "resource/mariner_emblem.png");
+				m_inittex = loadTexture(m_rend, "resource/mariner_emblem.png");
 				break;
 			case SORCERER:
 				m_health = DEFAULT_SORCERER_FULL_HEALTH;
-				m_inittex = drawer::loadTexture(m_rend, "resource/sorcerer_emblem.png");
+				m_inittex = loadTexture(m_rend, "resource/sorcerer_emblem.png");
 				break;
 			case TECH_MASTER:
 				m_health = DEFAULT_TECHMASTER_FULL_HEALTH;
-				m_inittex = drawer::loadTexture(m_rend, "resource/techmaster_emblem.png");
+				m_inittex = loadTexture(m_rend, "resource/techmaster_emblem.png");
 				break;
 			case BIO_PRO:
 				m_health = DEFAULT_BIOPRO_FULL_HEALTH;
-				m_inittex = drawer::loadTexture(m_rend, "resource/biopro_emblem.png");
+				m_inittex = loadTexture(m_rend, "resource/biopro_emblem.png");
 				break;
 		}
 	}
@@ -79,7 +79,7 @@ namespace mob {
 	}
 
 	void Player::render() const {
-		drawer::drawTexture(m_rend, m_inittex, m_box.x, m_box.y, m_box.w, m_box.h);
+		drawTexture(m_rend, m_inittex, m_box.x, m_box.y, m_box.w, m_box.h);
 	}
 }
 }

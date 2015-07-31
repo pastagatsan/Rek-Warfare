@@ -3,7 +3,8 @@
 #include <iostream>
 #include <string>
 
-namespace logger {
+namespace rekwarfare {
+namespace client {
 
 void log(Logtype t, std::string message) {
 	switch (t) {
@@ -25,5 +26,6 @@ void log(Logtype t, std::string message) {
 	}
 	if (t != ERROR)
 		std::cout << message << std::endl;
+}
 }
 }

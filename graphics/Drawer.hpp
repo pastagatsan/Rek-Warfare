@@ -4,7 +4,8 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 
-namespace drawer {
+namespace rekwarfare {
+namespace client {
 
 	static bool enable_color_mod = true;
 
@@ -14,4 +15,5 @@ namespace drawer {
 	void setColor(SDL_Texture* texture, Uint8 r=0, Uint8 g=0, Uint8 b=0);
 	void setAlpha(SDL_Texture* texture, Uint8 alpha=1);
 	void enableColorMod(bool flag);
+}
 }

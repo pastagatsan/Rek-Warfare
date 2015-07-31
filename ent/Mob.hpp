@@ -3,8 +3,8 @@
 #include "Entity.hpp"
 #include "SDL2/SDL.h"
 
-namespace entity {
-namespace mob {
+namespace rekwarfare {
+namespace client {
 
 	enum Direction { LEFT, RIGHT };
 

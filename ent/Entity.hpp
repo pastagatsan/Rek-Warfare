@@ -2,7 +2,8 @@
 
 #include "SDL2/SDL.h"
 
-namespace entity {
+namespace rekwarfare {
+namespace client {
 
 	class Entity {
 
@@ -28,4 +29,5 @@ namespace entity {
 		SDL_Rect m_box;
 		SDL_Renderer* m_rend = nullptr;
 	};
+}
 }

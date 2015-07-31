@@ -6,8 +6,9 @@
 #include "../Log.hpp"
 #include <string>
 
-namespace entity {
-namespace gui {
+namespace rekwarfare {
+namespace client {
+
 	Panel::Panel(SDL_Renderer* rend, int x, int y, int w, int h)
 		: Entity(rend, m_box) {
 		// m_box resizing
@@ -31,8 +32,8 @@ namespace gui {
 		}
 		if (m_backgroundEnabled) {
 			if (m_backgroundImageEnabled) {
-				drawer::enableColorMod(false);
-				drawer::drawTexture(m_rend, m_backgroundImage, m_box.x, m_box.y, m_box.w, m_box.h);
+				enableColorMod(false);
+				drawTexture(m_rend, m_backgroundImage, m_box.x, m_box.y, m_box.w, m_box.h);
 			} else {
 				// TODO: Use SDL_gfxPrimitives.h
 			}
@@ -59,7 +60,7 @@ namespace gui {
 		if (!(i_itemCount >= 256)){
 			if ((rx + w > m_box.w) || (ry + h > m_box.h) ||
 				(rx < m_box.x) || (ry < m_box.y)) {
-				logger::log(logger::WARNING, "Item #" + std::to_string(i_itemCount)
+				log(WARNING, "Item #" + std::to_string(i_itemCount)
 					+ " is out of bounds! (Panel " + m_name + ")");
 			} else {
 				item->setRX(rx);
@@ -71,7 +72,7 @@ namespace gui {
 			m_items[i_itemCount] = item;
 			i_itemCount++;
 		} else {
-			logger::log(logger::ERROR, "Panel" + m_name + " full! (limit = "
+			log(ERROR, "Panel" + m_name + " full! (limit = "
 				+ std::to_string(MAX_ITEMS) + ")");
 			return;
 		}

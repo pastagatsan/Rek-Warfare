@@ -4,11 +4,13 @@
 
 #include <string>
 
-namespace gui {
+namespace rekwarfare {
+namespace client {
 
 	class HUD {
 
 	public:
 		HUD();
 	};
+}
 }

@@ -11,6 +11,9 @@ int run(int argc, char* argv[]) {
 	int window_width = 824;
 	int window_height = 500;
 
+	using rekwarfare::client::log;
+	using rekwarfare::client::Window;
+
 	if (argc > 1){
 		if (strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "help") == 0) {
 			std::cout << "HELP" << std::endl;
@@ -28,25 +31,25 @@ int run(int argc, char* argv[]) {
 						window_height = std::stoi(argv[i + 1]);
 					}
 				} catch (const std::invalid_argument& inva) {
-					logger::log(logger::ERROR, "No conversion could be made (stoi)");
+					log(rekwarfare::client::ERROR, "No conversion could be made (stoi)");
 				} catch (const std::out_of_range& oor) {
-					logger::log(logger::ERROR, "Integer size out of range (stoi)");
+					log(rekwarfare::client::ERROR, "Integer size out of range (stoi)");
 				}
 			}
 		}
 	}
 
 	if (window_width < 100 || window_height < 100) {
-		logger::log(logger::ERROR, "Why would window size be less than 100x100!?");
+		log(rekwarfare::client::ERROR, "Why would window size be less than 100x100!?");
 		return 1;
 	}
 
-	logger::log(logger::INFO, "New window dimensions are " + std::to_string(window_width)
+	log(rekwarfare::client::INFO, "New window dimensions are " + std::to_string(window_width)
 		+ "x" + std::to_string(window_height));
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
 		std::string err = SDL_GetError();
-		logger::log(logger::ERROR, "Couldn't init SDL! Reason: " + err);
+		log(rekwarfare::client::ERROR, "Couldn't init SDL! Reason: " + err);
 		return 1;
 	}
 

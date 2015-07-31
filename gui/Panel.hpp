@@ -6,8 +6,8 @@
 #include "SDL2/SDL.h"
 #include <string>
 
-namespace entity {
-namespace gui {
+namespace rekwarfare {
+namespace client {
 
 	const auto MAX_ITEMS = 256;
 

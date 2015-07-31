@@ -5,8 +5,8 @@
 
 #include <string>
 
-namespace entity {
-namespace mob {
+namespace rekwarfare {
+namespace client {
 
 	const unsigned int DEFAULT_RAIDER_FULL_HEALTH = 200;
 	const unsigned int DEFAULT_BIOPRO_FULL_HEALTH = 155;

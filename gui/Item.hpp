@@ -3,8 +3,8 @@
 #include "../ent/Entity.hpp"
 #include "SDL2/SDL.h"
 
-namespace entity {
-namespace gui {
+namespace rekwarfare {
+namespace client {
 
 	class Item : public Entity {
 

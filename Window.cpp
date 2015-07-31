@@ -11,6 +11,9 @@
 #include <iostream>
 #include <string>
 
+namespace rekwarfare {
+namespace client {
+
 Window::Window(std::string title, int x, int y, int width, int height)
 	: m_title(title), m_x(x), m_y(y), m_width(width), m_height(height) {
 	// Init our stuff
@@ -18,7 +21,7 @@ Window::Window(std::string title, int x, int y, int width, int height)
 		SDL_WINDOW_SHOWN);
 	if (!m_win) {
 		std::string err = SDL_GetError();
-		logger::log(logger::ERROR, "Window failed to create!: " + err);
+		log(ERROR, "Window failed to create!: " + err);
 	}
 
 	// Assign m_x/y to proper values
@@ -27,7 +30,7 @@ Window::Window(std::string title, int x, int y, int width, int height)
 	m_renderer = SDL_CreateRenderer(m_win, -1, SDL_RENDERER_ACCELERATED);
 	if (!m_renderer) {
 		std::string err = SDL_GetError();
-		logger::log(logger::ERROR, "Renderer creation failed: " + err);
+		log(ERROR, "Renderer creation failed: " + err);
 	}
 
 	SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
@@ -38,16 +41,13 @@ Window::~Window() {
 	SDL_DestroyWindow(m_win);
 }
 
-using namespace drawer;
-using namespace entity::mob;
-using namespace entity::gui;
 
 void Window::setup() {
 	if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG) {
 		std::string err = IMG_GetError();
-		logger::log(logger::ERROR, "Could not init SDL_image! Reason: " + err);
+		log(ERROR, "Could not init SDL_image! Reason: " + err);
 	} else {
-		logger::log(logger::STATUS, "SDL_Image initialized successfully!");
+		log(STATUS, "SDL_Image initialized successfully!");
 	}
 
 	player = new Player(m_renderer, RAIDER, "Rodrun");
@@ -77,4 +77,7 @@ void Window::clear() {
 
 void Window::update() {
 	SDL_RenderPresent(m_renderer);
+}
+
+}
 }

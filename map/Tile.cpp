@@ -1,12 +1,18 @@
 #include "Tile.hpp"
 #include "../ent/Entity.hpp"
 
-namespace entity {
-namespace map {
+namespace rekwarfare {
+namespace client {
 
 	Tile::Tile(SDL_Renderer* rend, ID id) : Entity(rend, m_box), m_id(id) { }
 
-	void Tile::update() { }
-	void Tile::render() const { }
+	void Tile::update() {
+
+		mi_tick++;
+	}
+
+	void Tile::render() const {
+
+	}
 }
 }

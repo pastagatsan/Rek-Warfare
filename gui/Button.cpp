@@ -3,10 +3,8 @@
 #include "../graphics/Drawer.hpp"
 #include "SDL2/SDL.h"
 
-namespace entity {
-namespace gui {
-
-using namespace drawer;
+namespace rekwarfare {
+namespace client {
 
 Button::Button(SDL_Renderer* rend, SDL_Event* nev, std::string text)
 	: Item(rend), m_text(text) {
